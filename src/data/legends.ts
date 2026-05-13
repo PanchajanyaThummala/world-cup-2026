@@ -1,0 +1,55 @@
+import type { Legend } from '@/types'
+
+export const LEGENDS: Legend[] = [
+  {
+    id: 'pele',
+    name: 'Pelé',
+    nation: 'Brazil',
+    flag: '🇧🇷',
+    era: '1958–1970 Dynasty',
+    description: 'The only player to win three World Cups, Pelé redefined what a footballer could be — pure genius, joy, and power.',
+    photo: 'images/players/player-1.jpg',
+  },
+  {
+    id: 'maradona',
+    name: 'Diego Maradona',
+    nation: 'Argentina',
+    flag: '🇦🇷',
+    era: 'Hand of God Era',
+    description: 'In 1986 he scored the goal of the century and the most controversial goal ever — four minutes apart. A one-man World Cup.',
+    photo: 'images/players/player-2.jpg',
+  },
+  {
+    id: 'zidane',
+    name: 'Zinedine Zidane',
+    nation: 'France',
+    flag: '🇫🇷',
+    era: 'Golden Generation',
+    description: 'Two final goals in 1998. A headbutt that ended his career in 2006. No player has ever commanded the world stage so completely.',
+  },
+  {
+    id: 'ronaldo-r9',
+    name: 'Ronaldo Nazário',
+    nation: 'Brazil',
+    flag: '🇧🇷',
+    era: 'The Phenomenon Era',
+    description: 'Struck down by a seizure the night before the 1998 final, came back in 2002 to score twice and claim his crown. The greatest striker.',
+    photo: 'images/players/trophy.jpg',
+  },
+  {
+    id: 'klose',
+    name: 'Miroslav Klose',
+    nation: 'Germany',
+    flag: '🇩🇪',
+    era: 'Record Breaker Era',
+    description: 'The all-time World Cup top scorer with 16 goals across four tournaments — a record that may stand forever.',
+  },
+  {
+    id: 'yashin',
+    name: 'Lev Yashin',
+    nation: 'USSR',
+    flag: '🇷🇺',
+    era: 'The Black Spider Era',
+    description: 'The only goalkeeper ever to win the Ballon d\'Or, Yashin saved an estimated 150 penalties in his career. The blueprint for modern goalkeeping.',
+  },
+]

@@ -1,0 +1,86 @@
+import type { DeepFact } from '@/types'
+
+export const DEEP_FACTS: DeepFact[] = [
+  {
+    id: 'fact-001',
+    hook: 'Geoff Hurst is the only player to score a hat-trick in a World Cup final',
+    supporting: 'England\'s 1966 hero scored three goals against West Germany — including the famous "did it cross the line" strike. No player in any of the 22 tournaments since has matched this. The hat-trick in a final remains the single hardest individual achievement in the sport.',
+    category: 'Records',
+    year: 1966,
+  },
+  {
+    id: 'fact-002',
+    hook: 'The fastest red card in World Cup history came after just 56 seconds',
+    supporting: 'José Batista of Uruguay was sent off 56 seconds into the 1986 match against Scotland — before a single shot had been taken. Scotland, despite playing with 10 men for nearly the entire match, could only draw 0–0. The record has stood for nearly four decades.',
+    category: 'Oddities',
+    year: 1986,
+  },
+  {
+    id: 'fact-003',
+    hook: 'Eusébio scored 9 goals at a single World Cup — despite Portugal being eliminated in the semi-final',
+    supporting: 'The Black Panther from Mozambique lit up England 1966 with 9 goals in just 6 games. He scored 4 against North Korea in a comeback from 3–0 down. He wept on the pitch after Portugal\'s semi-final defeat to England. His tally remained the tournament record for 24 years.',
+    category: 'Forgotten Heroes',
+    year: 1966,
+  },
+  {
+    id: 'fact-004',
+    hook: 'The 1930 World Cup was played entirely without penalties or yellow cards',
+    supporting: 'In 1930, there was no yellow card, no red card, and no penalty shootout. Disputes were settled by the referee\'s word alone — and sometimes by fists. A brawl in the Argentina-France match left several players injured. FIFA introduced systematic sanctions only in the 1970s.',
+    category: 'Firsts',
+    year: 1930,
+  },
+  {
+    id: 'fact-005',
+    hook: 'Only 13 teams competed in the first World Cup — today 48 qualify',
+    supporting: 'The 1930 tournament in Uruguay had just 13 participants, with several European teams refusing to make the 3-week boat trip. The US finished third. The 2026 expansion to 48 teams means more nations will play at one World Cup than the entire 1930 field, multiplied by 3.7.',
+    category: 'Stats',
+  },
+  {
+    id: 'fact-006',
+    hook: 'Just Fontaine scored 13 goals at a single World Cup — a record that has never been broken',
+    supporting: 'France\'s striker at the 1958 World Cup in Sweden scored 13 goals in just 6 games — a record that has survived for 68 years. He once scored 4 in a single match. Fontaine was only playing because the first-choice striker was injured. The greatest World Cup performance of all time happened by accident.',
+    category: 'Records',
+    year: 1958,
+  },
+  {
+    id: 'fact-007',
+    hook: 'The 2006 World Cup final had to be abandoned temporarily due to a GPS failure',
+    supporting: 'This is false — but the real oddity is that the 2006 final was decided by a headbutt. Zinedine Zidane, 10 minutes from the end of his career, was sent off for headbutting Marco Materazzi in the chest after a verbal provocation. Italy won on penalties. The referee consulted the fourth official, who had seen it on TV.',
+    category: 'Oddities',
+    year: 2006,
+  },
+  {
+    id: 'fact-008',
+    hook: 'North Korea reached the World Cup quarter-finals in 1966 — and have never replicated it',
+    supporting: 'The North Korean team of 1966 arrived in England largely unknown and were booed in early training sessions. They beat Italy 1–0, causing one of the tournament\'s greatest shocks, then led Portugal 3–0 in the quarter-finals before Eusébio\'s one-man comeback ended their run. Their players vanished back into North Korea, largely unheard from again.',
+    category: 'Forgotten Heroes',
+    year: 1966,
+  },
+  {
+    id: 'fact-009',
+    hook: 'The first World Cup goal was scored by a Frenchman — and went officially unrecorded for years',
+    supporting: 'Lucien Laurent of France scored the first-ever World Cup goal against Mexico on July 13, 1930. For decades, the goal time was listed as different values in different sources. FIFA only officially recognized it in the late 20th century. Laurent lived to 97 and saw his place in history finally acknowledged.',
+    category: 'Firsts',
+    year: 1930,
+  },
+  {
+    id: 'fact-010',
+    hook: 'Brazil is the only nation to have qualified for every single World Cup',
+    supporting: 'All 22 World Cups — from Uruguay 1930 to Qatar 2022 — have included Brazil. No other nation has achieved this. Germany, Argentina, Italy, and Spain have all missed at least one. Brazil\'s record of unbroken qualification over 96 years is one of the most remarkable consistencies in all of sport.',
+    category: 'Stats',
+  },
+  {
+    id: 'fact-011',
+    hook: 'An entire squad once turned up to a World Cup match in the wrong kits',
+    supporting: 'In 1974, Zaire faced Brazil wearing numbered shirts that did not correspond to the official team sheet — leading officials to believe different players were on the pitch. The match continued. Zaire lost 3–0. The kit mix-up was the least of their troubles: they famously kicked a free kick away to prevent a heavy defeat against Yugoslavia.',
+    category: 'Oddities',
+    year: 1974,
+  },
+  {
+    id: 'fact-012',
+    hook: 'The World Cup trophy was found under a bed by a dog named Pickles',
+    supporting: 'In 1966, the Jules Rimet trophy was stolen while on display in London four months before the tournament. It was found seven days later by a dog named Pickles on a garden path in Norwood, South London. Pickles became a national celebrity. England won the tournament later that summer.',
+    category: 'Oddities',
+    year: 1966,
+  },
+]
