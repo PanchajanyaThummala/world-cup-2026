@@ -55,7 +55,7 @@ export function StandingsTable({ standings, compact = false }: StandingsTablePro
                       'text-xs leading-tight',
                       isQualifier ? 'font-semibold text-neutral-50' : 'font-medium',
                     )}
-                    style={{ fontFamily: "'Inter', sans-serif" }}
+                    style={{ fontFamily: "'Inter', sans-serif", overflowWrap: 'anywhere', minWidth: 0 }}
                   >
                     {s.team.name}
                   </span>

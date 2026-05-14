@@ -15,6 +15,7 @@ export function Card({ children, className, hover = false, onClick }: CardProps)
       whileHover={hover ? { y: -4, transition: { duration: 0.2 } } : undefined}
       className={cn('rounded-2xl relative', onClick && 'cursor-pointer', className)}
       style={{
+        padding: 'var(--card-padding, 32px)',
         background: 'rgba(13, 17, 23, 0.65)',
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
@@ -31,10 +32,7 @@ export function Card({ children, className, hover = false, onClick }: CardProps)
       } : undefined}
       data-card
     >
-      {/* Content layer — z-index 1 ensures it always renders above decorative children */}
-      <div style={{ position: 'relative', zIndex: 1 }}>
-        {children}
-      </div>
+      {children}
     </motion.div>
   )
 }

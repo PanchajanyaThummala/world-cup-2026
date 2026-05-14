@@ -39,6 +39,7 @@
   --section-py: 64px;
   --banner-h: 56px;
   --gutter-x: 16px;
+  --card-padding: 32px;
 }
 
 @media (min-width: 640px) {
@@ -91,6 +92,13 @@ body {
 ::selection {
   background: rgba(201, 168, 76, 0.3);
   color: #F9FAFB;
+}
+
+/* Prevent text from ever escaping card padding */
+p, h1, h2, h3, h4, h5, h6, span, li {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  min-width: 0;
 }
 
 /* Custom scrollbar */

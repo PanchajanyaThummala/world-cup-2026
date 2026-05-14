@@ -19,7 +19,7 @@ export function ImpactStoryCard({ story, index }: ImpactStoryCardProps) {
       transition={{ delay: index * 0.06 }}
       className="min-w-0"
     >
-      <Card hover className="p-7 h-full overflow-hidden">
+      <Card hover className="h-full overflow-hidden flex flex-col">
         {/* Gold left accent bar — decorative, sits at z-0 (default) */}
         <div
           className="absolute left-0 top-6 bottom-6 w-0.5"
@@ -47,14 +47,14 @@ export function ImpactStoryCard({ story, index }: ImpactStoryCardProps) {
         </div>
 
         <h3
-          className="text-neutral-50 font-bold text-xl mb-3"
-          style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.3 }}
+          className="text-neutral-50 font-bold text-xl mb-3 min-w-0"
+          style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.3, overflowWrap: 'anywhere' }}
         >
           {story.title}
         </h3>
         <p
-          className="text-neutral-400 text-sm"
-          style={{ lineHeight: 1.65 }}
+          className="text-neutral-400 text-sm min-w-0"
+          style={{ lineHeight: 1.65, overflowWrap: 'anywhere' }}
         >
           {story.narrative}
         </p>

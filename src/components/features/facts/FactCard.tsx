@@ -32,19 +32,19 @@ export function FactCard({ fact, index }: FactCardProps) {
       viewport={{ once: true, margin: '-40px' }}
       transition={{ delay: organicDelay(index) }}
     >
-      <Card hover className="p-6 h-full">
+      <Card hover className="h-full flex flex-col">
         <div className="mb-4">
           <Badge label={fact.category} variant={categoryVariant[fact.category] ?? 'neutral'} />
         </div>
         <p
-          className="text-neutral-50 font-bold text-lg mb-4"
-          style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.4 }}
+          className="text-neutral-50 font-bold text-lg mb-4 min-w-0"
+          style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.4, overflowWrap: 'anywhere' }}
         >
           {fact.hook}
         </p>
         <p
-          className="text-neutral-400 text-sm"
-          style={{ lineHeight: 1.65 }}
+          className="text-neutral-400 text-sm min-w-0"
+          style={{ lineHeight: 1.65, overflowWrap: 'anywhere' }}
         >
           {fact.supporting}
         </p>

@@ -98,16 +98,16 @@ export function MomentCard({ moment, side, index }: MomentCardProps) {
           </h3>
           <p
             className="text-neutral-400 text-sm mb-4"
-            style={{ lineHeight: 1.65 }}
+            style={{ lineHeight: 1.65, overflowWrap: 'anywhere' }}
           >
             {moment.narrative}
           </p>
-          {/* Significance line — always visible, top border separator */}
           <p
             className="text-neutral-500 text-xs italic mt-4 pt-4"
             style={{
               lineHeight: 1.65,
               borderTop: '1px solid rgba(31,41,55,0.6)',
+              overflowWrap: 'anywhere',
             }}
           >
             {moment.significance}
