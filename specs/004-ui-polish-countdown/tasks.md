@@ -148,8 +148,8 @@ description: "Countdown banner + UI polish — broken strings, stats band, group
 - [x] T023 Run `npm run build` — fix any TypeScript errors
 - [x] T024 Run `npm run test:run` — fix any test failures (CountdownBanner test must pass; existing 37 must continue passing)
 - [x] T025 [P] Manual scroll-through audit at 1440px and 375px — confirm no string concatenation, all sections rhythmic, banner sticky above navbar
-- [ ] T026 [P] Update `CHANGELOG.md` — add `[0.4.0]` entry with all User Story summaries
-- [ ] T027 Commit + push `004-ui-polish-countdown` branch to GitHub
+- [x] T026 [P] Update `CHANGELOG.md` — add `[0.4.0]` entry with all User Story summaries
+- [x] T027 Commit + push `004-ui-polish-countdown` branch to GitHub
 
 ---
 

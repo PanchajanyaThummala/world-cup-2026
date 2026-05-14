@@ -34,16 +34,35 @@
   --spacing: 8px;
 }
 
-/* Layout rhythm tokens — unified vertical spacing & banner height */
+/* Layout rhythm tokens — unified vertical spacing, banner height, horizontal gutter */
 :root {
   --section-py: 64px;
-  --banner-h: 48px;
+  --banner-h: 56px;
+  --gutter-x: 16px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --gutter-x: 24px;
+  }
 }
 
 @media (min-width: 768px) {
   :root {
     --section-py: 96px;
-    --banner-h: 36px;
+    --banner-h: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --gutter-x: 56px;
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --gutter-x: 72px;
   }
 }
 

@@ -7,6 +7,9 @@ interface StandingsTableProps {
 }
 
 export function StandingsTable({ standings, compact = false }: StandingsTableProps) {
+  // Gold qualifier treatment only after at least one match has been played
+  const tournamentStarted = standings.some(s => s.mp > 0)
+
   return (
     <table className="w-full text-sm" style={{ tableLayout: 'fixed' }}>
       <colgroup>
@@ -31,41 +34,47 @@ export function StandingsTable({ standings, compact = false }: StandingsTablePro
       </thead>
       <tbody>
         {standings.map((s, i) => {
-          const isQualifier = i < 2
+          const isQualifier = tournamentStarted && i < 2
           return (
             <tr
               key={s.team.code}
               className={cn(
-                'border-b border-neutral-800/30 last:border-0 transition-colors',
-                isQualifier ? 'text-neutral-100' : 'text-neutral-500',
+                'border-b border-neutral-800/40 last:border-0 transition-colors',
+                isQualifier ? 'text-neutral-100' : 'text-neutral-300',
               )}
               style={isQualifier ? {
                 background: 'rgba(201,168,76,0.06)',
                 boxShadow: 'inset 2px 0 0 rgba(201,168,76,0.5)',
               } : undefined}
             >
-              <td className="py-2.5 px-2">
+              <td className="py-3 px-2">
                 <div className="flex items-center gap-2 min-w-0">
                   <span aria-hidden="true" className="text-base leading-none flex-shrink-0">{s.team.flag}</span>
-                  <span className={cn(
-                    'text-xs leading-tight',
-                    isQualifier ? 'font-semibold text-neutral-50' : 'font-medium',
-                  )} style={{ fontFamily: "'Inter', sans-serif" }}>
+                  <span
+                    className={cn(
+                      'text-xs leading-tight',
+                      isQualifier ? 'font-semibold text-neutral-50' : 'font-medium',
+                    )}
+                    style={{ fontFamily: "'Inter', sans-serif" }}
+                  >
                     {s.team.name}
                   </span>
                 </div>
               </td>
-              <td className="text-center py-2.5 px-2 tabular-nums" style={{ fontSize: 12 }}>{s.mp}</td>
-              <td className="text-center py-2.5 px-2 tabular-nums" style={{ fontSize: 12 }}>{s.w}</td>
-              <td className="text-center py-2.5 px-2 tabular-nums" style={{ fontSize: 12 }}>{s.d}</td>
-              <td className="text-center py-2.5 px-2 tabular-nums" style={{ fontSize: 12 }}>{s.l}</td>
+              <td className="text-center py-3 px-2 tabular-nums" style={{ fontSize: 12 }}>{s.mp}</td>
+              <td className="text-center py-3 px-2 tabular-nums" style={{ fontSize: 12 }}>{s.w}</td>
+              <td className="text-center py-3 px-2 tabular-nums" style={{ fontSize: 12 }}>{s.d}</td>
+              <td className="text-center py-3 px-2 tabular-nums" style={{ fontSize: 12 }}>{s.l}</td>
               {!compact && (
-                <td className="text-center py-2.5 px-2 tabular-nums" style={{ fontSize: 12 }}>
+                <td className="text-center py-3 px-2 tabular-nums" style={{ fontSize: 12 }}>
                   {s.gd >= 0 ? `+${s.gd}` : s.gd}
                 </td>
               )}
               <td
-                className={cn('text-center py-2.5 px-2 tabular-nums font-bold', isQualifier && 'text-gold-400')}
+                className={cn(
+                  'text-center py-3 px-2 tabular-nums font-bold',
+                  isQualifier ? 'text-gold-400' : 'text-neutral-400',
+                )}
                 style={{ fontSize: 13 }}
               >
                 {s.pts}

@@ -73,8 +73,8 @@ export function LegendCard({ legend, featured = false, index }: LegendCardProps)
         </div>
       )}
 
-      {/* Content overlay */}
-      <div className="absolute inset-0 flex flex-col justify-end p-6">
+      {/* Content overlay — explicit z-10 so it always renders above photo / gradient bg */}
+      <div className="absolute inset-0 flex flex-col justify-end p-7 z-10">
         <Badge label={legend.era} variant="gold" size="sm" />
         <motion.h3
           whileHover={{ color: '#E2C267' }}

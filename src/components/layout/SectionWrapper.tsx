@@ -20,7 +20,13 @@ export function SectionWrapper({ id, children, className, style, fullBleed = fal
       }}
     >
       {fullBleed ? children : (
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div
+          className="max-w-7xl mx-auto"
+          style={{
+            paddingLeft: 'var(--gutter-x)',
+            paddingRight: 'var(--gutter-x)',
+          }}
+        >
           {children}
         </div>
       )}

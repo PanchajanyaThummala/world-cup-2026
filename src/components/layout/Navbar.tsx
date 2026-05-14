@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { SoccerBall } from '@/components/ui/SoccerBall'
+import { MobileNav } from './MobileNav'
 
 const NAV_SECTIONS = [
   { id: 'hero', label: 'Home' },
@@ -62,7 +63,10 @@ export function Navbar() {
         } : {}),
       }}
     >
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div
+        className="max-w-7xl mx-auto h-16 flex items-center justify-between"
+        style={{ paddingLeft: 'var(--gutter-x)', paddingRight: 'var(--gutter-x)' }}
+      >
         <button
           onClick={() => scrollTo('hero')}
           className="flex items-center gap-2.5 group"
@@ -77,7 +81,7 @@ export function Navbar() {
           </span>
         </button>
 
-        <ul className="hidden md:flex items-center gap-1">
+        <ul className="hidden lg:flex items-center gap-1">
           {NAV_SECTIONS.map(({ id, label }) => (
             <li key={id}>
               <button
@@ -102,6 +106,9 @@ export function Navbar() {
             </li>
           ))}
         </ul>
+
+        {/* Mobile hamburger — visible below lg */}
+        <MobileNav sections={NAV_SECTIONS} activeSection={activeSection} />
       </div>
     </motion.nav>
   )

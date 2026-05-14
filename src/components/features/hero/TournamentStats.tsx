@@ -80,7 +80,10 @@ export function TournamentStats() {
         style={{ background: 'linear-gradient(90deg, transparent, rgba(201,168,76,0.06), transparent)' }}
         aria-hidden="true"
       />
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-5">
+      <div
+        className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-5"
+        style={{ paddingLeft: 'var(--gutter-x)', paddingRight: 'var(--gutter-x)' }}
+      >
         {STATS.map((s, i) => <Stat key={s.label} {...s} index={i} />)}
       </div>
     </div>

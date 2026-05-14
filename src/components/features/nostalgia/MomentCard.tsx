@@ -34,16 +34,24 @@ export function MomentCard({ moment, side, index }: MomentCardProps) {
         <span className="text-neutral-600 text-xs uppercase tracking-wider">{moment.host}</span>
       </div>
 
-      {/* Card */}
+      {/* Card — overflow visible on outer wrapper so significance line never clips.
+          The photo header below has its own overflow-hidden scope. */}
       <motion.div
         whileHover={{ y: -4 }}
         transition={{ duration: 0.2 }}
-        className="flex-1 rounded-xl overflow-hidden"
-        style={{ border: '1px solid rgba(31,41,55,0.8)', background: 'rgba(13,17,23,0.9)' }}
+        className="flex-1 rounded-xl"
+        style={{
+          border: '1px solid rgba(31,41,55,0.8)',
+          background: 'rgba(13,17,23,0.9)',
+          minWidth: 0,
+        }}
       >
-        {/* Photo or gradient header */}
+        {/* Photo header (own clipping scope, rounded top corners) */}
         {moment.photo ? (
-          <div className="relative h-40 overflow-hidden">
+          <div
+            className="relative h-40 overflow-hidden"
+            style={{ borderTopLeftRadius: 11, borderTopRightRadius: 11 }}
+          >
             <img
               src={`/${moment.photo}`}
               alt={moment.title}
@@ -60,20 +68,25 @@ export function MomentCard({ moment, side, index }: MomentCardProps) {
           </div>
         ) : (
           <div
-            className="h-16 flex items-center px-6"
-            style={{ background: 'linear-gradient(135deg, #1F2937 0%, #161B26 100%)' }}
+            className="h-16 flex items-center px-6 relative overflow-hidden"
+            style={{
+              background: 'linear-gradient(135deg, #1F2937 0%, #161B26 100%)',
+              borderTopLeftRadius: 11,
+              borderTopRightRadius: 11,
+            }}
           >
             <span
               className="text-gold-900 font-bold select-none"
-              style={{ fontFamily: "'Oswald', sans-serif", fontSize: 40, opacity: 0.4 }}
+              style={{ fontFamily: "'Oswald', sans-serif", fontSize: 40, opacity: 0.4, position: 'relative', zIndex: 0 }}
             >
               {moment.year}
             </span>
           </div>
         )}
 
-        <div className="p-6">
-          <div className="flex items-center gap-2 mb-3 flex-wrap">
+        {/* Body — generous padding, content drives height */}
+        <div className="p-6" style={{ position: 'relative', zIndex: 1 }}>
+          <div className="flex items-center gap-2 mb-4 flex-wrap">
             <Badge label={moment.era} variant="gold" />
             <Badge label={moment.category} variant="neutral" />
           </div>
@@ -83,10 +96,19 @@ export function MomentCard({ moment, side, index }: MomentCardProps) {
           >
             {moment.title}
           </h3>
-          <p className="text-neutral-400 text-sm leading-relaxed mb-4">{moment.narrative}</p>
           <p
-            className="text-neutral-600 text-xs italic leading-relaxed pl-4"
-            style={{ borderLeft: '2px solid rgba(201,168,76,0.25)' }}
+            className="text-neutral-400 text-sm mb-4"
+            style={{ lineHeight: 1.65 }}
+          >
+            {moment.narrative}
+          </p>
+          {/* Significance line — always visible, top border separator */}
+          <p
+            className="text-neutral-500 text-xs italic mt-4 pt-4"
+            style={{
+              lineHeight: 1.65,
+              borderTop: '1px solid rgba(31,41,55,0.6)',
+            }}
           >
             {moment.significance}
           </p>

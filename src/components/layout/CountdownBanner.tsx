@@ -41,7 +41,10 @@ export function CountdownBanner() {
         borderBottom: '1px solid rgba(201,168,76,0.18)',
       }}
     >
-      <div className="flex items-center gap-4 md:gap-6 px-4 text-center flex-wrap justify-center">
+      <div
+        className="w-full max-w-7xl mx-auto flex items-center gap-3 md:gap-6 text-center flex-wrap justify-center"
+        style={{ paddingLeft: 'var(--gutter-x)', paddingRight: 'var(--gutter-x)' }}
+      >
         {state.phase === 'countdown' ? (
           <>
             <span
@@ -63,7 +66,7 @@ export function CountdownBanner() {
               className="hidden md:inline text-neutral-500 whitespace-nowrap"
               style={{ fontSize: 11, fontFamily: "'Inter', sans-serif" }}
             >
-              Mexico v TBD · Estadio Azteca
+              Opening match · Mexico City
             </span>
           </>
         ) : (

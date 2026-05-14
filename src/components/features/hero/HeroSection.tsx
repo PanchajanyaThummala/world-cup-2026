@@ -55,8 +55,13 @@ export function HeroSection() {
 
       {/* Main content */}
       <motion.div
-        style={{ y: shouldReduce ? 0 : yContent, opacity: shouldReduce ? 1 : opacity }}
-        className="relative z-10 text-center px-6 max-w-5xl mx-auto w-full"
+        style={{
+          y: shouldReduce ? 0 : yContent,
+          opacity: shouldReduce ? 1 : opacity,
+          paddingLeft: 'var(--gutter-x)',
+          paddingRight: 'var(--gutter-x)',
+        }}
+        className="relative z-10 text-center max-w-5xl mx-auto w-full"
       >
         {/* Eyebrow */}
         <motion.p
@@ -76,10 +81,11 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.5, ease: EASE_OUT_EXPO }}
           style={{
             fontFamily: "'Bebas Neue', sans-serif",
-            fontSize: 'clamp(64px, 11vw, 140px)',
+            fontSize: 'clamp(56px, 10vw, 128px)',
             lineHeight: 0.9,
             letterSpacing: '0.06em',
             color: '#F9FAFB',
+            wordBreak: 'keep-all',
           }}
         >
           FIFA
@@ -92,9 +98,10 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.65, ease: EASE_OUT_EXPO }}
           style={{
             fontFamily: "'Bebas Neue', sans-serif",
-            fontSize: 'clamp(64px, 12vw, 160px)',
+            fontSize: 'clamp(52px, 10vw, 140px)',
             lineHeight: 0.9,
             letterSpacing: '0.04em',
+            wordBreak: 'keep-all',
             background: 'linear-gradient(135deg, #F0D98B 0%, #C9A84C 50%, #A8842A 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
@@ -111,7 +118,7 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.8, ease: EASE_OUT_EXPO }}
           style={{
             fontFamily: "'Bebas Neue', sans-serif",
-            fontSize: 'clamp(80px, 14vw, 180px)',
+            fontSize: 'clamp(64px, 12vw, 160px)',
             lineHeight: 0.85,
             letterSpacing: '0.06em',
             WebkitTextStroke: '2px rgba(201,168,76,0.5)',

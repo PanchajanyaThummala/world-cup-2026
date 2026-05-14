@@ -27,12 +27,13 @@ export function GroupCard({ group }: GroupCardProps) {
       whileInView="visible"
       viewport={{ once: true, margin: '-40px' }}
       style={{ perspective: 1000, transformStyle: 'preserve-3d' }}
+      className="h-full"
     >
-      <Card hover className="p-6 min-h-[260px]">
+      <Card hover className="p-6 h-full flex flex-col">
         <div className="flex items-baseline gap-3 mb-5">
           <span
-            style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-            className="text-gold-400 text-3xl leading-none tracking-wide"
+            style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 32, lineHeight: 1, letterSpacing: '0.04em' }}
+            className="text-gold-400"
           >
             {group.label}
           </span>

@@ -5,6 +5,78 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [0.5.0] — 2026-05-14
+
+### Container Padding & Layout Consistency Fix
+
+Spec: [005-fix-padding-layout](specs/005-fix-padding-layout/spec.md)
+
+#### Added
+- **`--gutter-x` CSS token** — single source of truth for horizontal page padding (16/24/48 px responsive)
+- **`MobileNav`** — hamburger menu with slide-in panel for `<lg` viewports; 44×44px touch targets; Framer Motion AnimatePresence enter/exit
+
+#### Changed
+- **All containers use `--gutter-x`** — SectionWrapper, Navbar, CountdownBanner, TournamentStats, Footer
+- **Groups grid uses `auto-rows-fr`** — every card in a row now matches the height of the tallest sibling; no more misalignment or wasted whitespace
+- **GroupCard** drops fixed `min-h-[260px]`; uses `h-full flex flex-col` (content-driven height)
+- **Navbar desktop breakpoint** moved from `md` (768px) → `lg` (1024px) to give all 8 nav links room before clipping
+- **Countdown banner** replaces speculative "Mexico v TBD · Estadio Azteca" with factual "Opening match · Mexico City"; banner content now respects gutter padding
+- **Standings gold treatment** activates only when `standings.some(s => s.mp > 0)` (any match played); pre-tournament rows render visually identical
+- **Standings team-name font weight** unified to `font-medium` pre-tournament; promotes to `font-semibold` for qualifying rows post-kickoff
+- **Banner height** bumped to 56px mobile / 40px desktop to allow content to fit without crowding the edges
+- **Minimum touch target** of 44×44px on logo button, hamburger button, nav links
+
+#### Fixed
+- Section titles ("The Group Stage", etc.) no longer clip on the left at any viewport
+- "Bracket" nav item no longer overflows the right edge — desktop nav appears only at `≥1024px`
+- Group A and Group B no longer misalign vertically — all cards share row height
+- Countdown banner text no longer crowds the right viewport edge
+- Misleading gold "0 PTS" highlighting on pre-tournament rows removed
+- Inconsistent team-name font weights resolved
+
+---
+
+## [0.6.0] — 2026-05-14
+
+### Card Audit + Layout Consistency (bundles 0.5.0 work)
+
+Specs:
+- [005-fix-padding-layout](specs/005-fix-padding-layout/spec.md)
+- [006-card-audit-cleanup](specs/006-card-audit-cleanup/spec.md)
+
+#### Added
+- **`--gutter-x` CSS token** — single source of truth for horizontal page padding (16/24/48 px responsive)
+- **`MobileNav`** — hamburger menu with slide-in panel for `<lg` viewports; 44×44px touch targets
+- **Card content layer pattern** — Card primitive wraps children in `position: relative; z-index: 1` so content always renders above decorative absolute elements
+
+#### Changed
+- **All containers use `--gutter-x`** — SectionWrapper, Navbar, CountdownBanner, TournamentStats, Footer
+- **Groups grid uses `auto-rows-fr`** — cards in a row share the tallest sibling's height; no more misalignment or wasted whitespace
+- **All section grid gaps bumped to `gap-8` (32px)** — Groups, Venues, Impact, Facts, Bracket, Legends; matches editorial rhythm
+- **Navbar desktop breakpoint** moved from `md` → `lg` so all 8 nav links fit without clipping
+- **Countdown banner** replaced speculative "Mexico v TBD · Estadio Azteca" with factual "Opening match · Mexico City"; gutter padding applied
+- **Standings gold treatment** activates only when `mp > 0` on any team (tournament started); pre-tournament rows are visually neutral
+- **Standings rows** row vertical padding bumped from `py-2.5` → `py-3` (12px); borders `/30` → `/40` for clearer separation
+- **GroupCard letter** bumped to 32px Bebas Neue for stronger visual anchor
+- **VenueCard** drops fixed `min-h-[200px]`; layout restructured to 3 explicit rows (country eyebrow / venue heading / divider + capacity)
+- **MomentCard** outer `overflow: hidden` removed so significance line never clips; significance line gets top-border + padding separator
+- **MomentCard** body text uses `line-height: 1.65` for editorial readability
+- **ImpactStoryCard** content layer renders above accent bar via z-index pattern; `min-w-0` added to grid wrapper so badges don't clip in narrow columns
+- **LegendCard** content overlay explicit `z-10` above photo bg
+- **FactCard** body line-height `1.65`; hook tightened to `1.4`
+- **Banner height** 56px mobile / 40px desktop
+
+#### Fixed
+- Section titles ("The Group Stage" etc.) no longer clip on left at any viewport
+- "Bracket" nav item no longer overflows right edge
+- Group cards now align in a perfect grid; no wasted whitespace below short tables
+- Countdown banner content no longer crowds the right viewport edge
+- Misleading gold "0 PTS" highlighting on pre-tournament rows removed
+- Nostalgia significance line never clipped — always visible with separator
+- Impact section category tags no longer clip at narrow viewports
+
+---
+
 ## [0.4.0] — 2026-05-14
 
 ### Countdown Header + UI Polish Pass

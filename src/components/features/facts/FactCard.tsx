@@ -37,12 +37,17 @@ export function FactCard({ fact, index }: FactCardProps) {
           <Badge label={fact.category} variant={categoryVariant[fact.category] ?? 'neutral'} />
         </div>
         <p
-          className="text-neutral-50 font-bold text-lg leading-snug mb-4"
-          style={{ fontFamily: "'Inter', sans-serif" }}
+          className="text-neutral-50 font-bold text-lg mb-4"
+          style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.4 }}
         >
           {fact.hook}
         </p>
-        <p className="text-neutral-400 text-sm leading-relaxed">{fact.supporting}</p>
+        <p
+          className="text-neutral-400 text-sm"
+          style={{ lineHeight: 1.65 }}
+        >
+          {fact.supporting}
+        </p>
       </Card>
     </motion.div>
   )

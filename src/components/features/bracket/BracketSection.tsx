@@ -17,7 +17,7 @@ export function BracketSection() {
 
       <div className="mb-16">
         <h3 className="text-neutral-300 font-bold text-lg mb-6">Group Stage</h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 auto-rows-fr">
           {GROUPS.map(group => <GroupCard key={group.label} group={group} />)}
         </div>
       </div>

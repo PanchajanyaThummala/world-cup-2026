@@ -18,7 +18,7 @@ export function ImpactSection() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-6"
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 auto-rows-fr"
       >
         {IMPACT_STORIES.map((story, i) => (
           <ImpactStoryCard key={story.id} story={story} index={i} />
