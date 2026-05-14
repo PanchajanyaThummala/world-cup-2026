@@ -9,9 +9,9 @@ export function HeroSection() {
   const [imgLoaded, setImgLoaded] = useState(false)
 
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start start', 'end start'] })
-  const yContent = useTransform(scrollYProgress, [0, 1], ['0%', '25%'])
-  const yImg = useTransform(scrollYProgress, [0, 1], ['0%', '15%'])
-  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
+  const yImg = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
+  const yContent = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
+  const opacity = useTransform(scrollYProgress, [0, 0.65], [1, 0])
 
   return (
     <section
@@ -20,94 +20,157 @@ export function HeroSection() {
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
       style={{ background: '#080A0F' }}
     >
-      {/* Background photo with parallax */}
+      {/* Background photo parallax */}
       <motion.div
         style={{ y: shouldReduce ? 0 : yImg }}
-        className="absolute inset-0 w-full h-[115%] -top-[8%]"
+        className="absolute inset-0 w-full h-[120%] -top-[10%]"
       >
         <img
           src="/images/hero-bg.jpg"
-          alt="FIFA World Cup 2026 stadium"
+          alt="FIFA World Cup 2026 soccer stadium"
           width={1920}
           height={1080}
           loading="eager"
           fetchPriority="high"
           onLoad={() => setImgLoaded(true)}
           className="w-full h-full object-cover object-center"
-          style={{
-            opacity: imgLoaded ? 1 : 0,
-            transition: 'opacity 0.8s ease',
-          }}
+          style={{ opacity: imgLoaded ? 1 : 0, transition: 'opacity 1s ease' }}
         />
-        {/* Dark gradient overlay — ensures text legibility */}
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(to bottom, rgba(8,10,15,0.55) 0%, rgba(8,10,15,0.35) 40%, rgba(8,10,15,0.75) 80%, #080A0F 100%)',
+            background: 'linear-gradient(to bottom, rgba(8,10,15,0.3) 0%, rgba(8,10,15,0.2) 30%, rgba(8,10,15,0.7) 75%, #080A0F 100%)',
           }}
         />
       </motion.div>
 
-      {/* Content — 3 zones only */}
+      {/* Light streak / lens flare */}
+      <div
+        className="absolute top-0 right-0 w-1/3 h-2/3 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse at top right, rgba(201,168,76,0.07) 0%, transparent 60%)',
+          zIndex: 3,
+        }}
+      />
+
+      {/* Main content */}
       <motion.div
         style={{ y: shouldReduce ? 0 : yContent, opacity: shouldReduce ? 1 : opacity }}
         className="relative z-10 text-center px-6 max-w-5xl mx-auto w-full"
       >
-        {/* Zone 1: Eyebrow */}
+        {/* Eyebrow */}
         <motion.p
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3, ease: EASE_OUT_EXPO }}
-          className="text-gold-400 font-semibold uppercase mb-6 tracking-widest"
-          style={{ fontSize: 11, letterSpacing: '0.2em', fontFamily: "'Inter', sans-serif" }}
+          transition={{ duration: 0.7, delay: 0.3, ease: EASE_OUT_EXPO }}
+          className="text-gold-400 font-bold uppercase mb-8 tracking-widest"
+          style={{ fontSize: 11, letterSpacing: '0.22em', fontFamily: "'Inter', sans-serif" }}
         >
           The Greatest Tournament on Earth
         </motion.p>
 
-        {/* Zone 2: Title */}
-        <motion.h1
-          initial={{ opacity: 0, y: 32 }}
+        {/* FIFA — white */}
+        <motion.p
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5, ease: EASE_OUT_EXPO }}
           style={{
             fontFamily: "'Bebas Neue', sans-serif",
-            fontSize: 'clamp(72px, 13vw, 180px)',
-            lineHeight: 0.88,
-            letterSpacing: '0.03em',
+            fontSize: 'clamp(64px, 11vw, 140px)',
+            lineHeight: 0.9,
+            letterSpacing: '0.06em',
+            color: '#F9FAFB',
           }}
-          className="text-neutral-50 leading-none"
         >
-          FIFA<br />
-          <span className="text-gold-400">World Cup</span><br />
-          2026
-        </motion.h1>
+          FIFA
+        </motion.p>
 
-        {/* Zone 3: Subtitle */}
+        {/* WORLD CUP — gold gradient */}
+        <motion.p
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.65, ease: EASE_OUT_EXPO }}
+          style={{
+            fontFamily: "'Bebas Neue', sans-serif",
+            fontSize: 'clamp(64px, 12vw, 160px)',
+            lineHeight: 0.9,
+            letterSpacing: '0.04em',
+            background: 'linear-gradient(135deg, #F0D98B 0%, #C9A84C 50%, #A8842A 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+          }}
+        >
+          WORLD CUP
+        </motion.p>
+
+        {/* 2026 — outlined stroke */}
+        <motion.p
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.8, ease: EASE_OUT_EXPO }}
+          style={{
+            fontFamily: "'Bebas Neue', sans-serif",
+            fontSize: 'clamp(80px, 14vw, 180px)',
+            lineHeight: 0.85,
+            letterSpacing: '0.06em',
+            WebkitTextStroke: '2px rgba(201,168,76,0.5)',
+            color: 'transparent',
+          }}
+        >
+          2026
+        </motion.p>
+
+        {/* Subtitle */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.9, ease: EASE_OUT_EXPO }}
-          className="text-neutral-300 text-lg md:text-xl mt-8 font-light"
-          style={{ fontFamily: "'Inter', sans-serif" }}
+          transition={{ duration: 0.6, delay: 1.0, ease: EASE_OUT_EXPO }}
+          className="text-neutral-300 text-base md:text-lg mt-8 font-light"
+          style={{ fontFamily: "'Inter', sans-serif", letterSpacing: '0.04em' }}
         >
-          June 11 – July 19, 2026 &nbsp;·&nbsp; 🇺🇸 USA &nbsp;·&nbsp; 🇨🇦 Canada &nbsp;·&nbsp; 🇲🇽 Mexico
+          June 11 – July 19, 2026&nbsp;&nbsp;·&nbsp;&nbsp;🇺🇸 USA&nbsp;&nbsp;·&nbsp;&nbsp;🇨🇦 Canada&nbsp;&nbsp;·&nbsp;&nbsp;🇲🇽 Mexico
         </motion.p>
+
+        {/* CTA Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.2, ease: EASE_OUT_EXPO }}
+          className="mt-10 flex justify-center"
+        >
+          <motion.button
+            onClick={() => document.getElementById('groups')?.scrollIntoView({ behavior: 'smooth' })}
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
+            className="px-8 py-4 font-bold text-sm uppercase tracking-widest text-neutral-950"
+            style={{
+              fontFamily: "'Inter', sans-serif",
+              letterSpacing: '0.14em',
+              background: 'linear-gradient(135deg, #F0D98B 0%, #C9A84C 60%, #A8842A 100%)',
+              borderRadius: 6,
+              boxShadow: '0 0 32px rgba(201,168,76,0.35)',
+            }}
+          >
+            Explore the Tournament
+          </motion.button>
+        </motion.div>
       </motion.div>
 
-      {/* Soccer ball — right edge only */}
+      {/* Soccer ball — right edge */}
       <motion.div
-        className="absolute right-8 md:right-16 bottom-24 z-10"
-        animate={!shouldReduce ? { y: [0, -18, 0] } : {}}
+        className="absolute right-8 md:right-20 bottom-28 z-10"
+        animate={!shouldReduce ? { y: [0, -20, 0] } : {}}
         transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
       >
-        <SoccerBall size={100} glow spin />
+        <SoccerBall size={110} glow spin />
       </motion.div>
 
       {/* Scroll cue */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.6 }}
+        transition={{ delay: 1.8 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
       >
         <span className="text-neutral-600 text-xs uppercase" style={{ letterSpacing: '0.2em' }}>Scroll</span>

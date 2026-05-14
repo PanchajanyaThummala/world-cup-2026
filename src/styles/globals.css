@@ -50,7 +50,15 @@ body {
   background-color: #080A0F;
   color: #E5E7EB;
   font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: -0.005em;
   overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(201, 168, 76, 0.3);
+  color: #F9FAFB;
 }
 
 /* Custom scrollbar */

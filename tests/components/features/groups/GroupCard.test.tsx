@@ -6,7 +6,9 @@ import { GROUPS } from '@/data/groups'
 describe('GroupCard', () => {
   it('renders the group label', () => {
     render(<GroupCard group={GROUPS[0]} />)
-    expect(screen.getByText('Group A')).toBeInTheDocument()
+    // Label now renders as 'A' in display type + 'Group' eyebrow separately
+    expect(screen.getByText('A')).toBeInTheDocument()
+    expect(screen.getByText(/group/i)).toBeInTheDocument()
   })
 
   it('renders all 4 team names', () => {

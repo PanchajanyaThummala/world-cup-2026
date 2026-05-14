@@ -14,14 +14,14 @@ export function SectionHeading({ eyebrow, title, subtitle, align = 'left' }: Sec
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-60px' }}
-      variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
-      className={`mb-16 ${align === 'center' ? 'text-center' : 'text-left'}`}
+      variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12 } } }}
+      className={`mb-20 ${align === 'center' ? 'text-center' : 'text-left'}`}
     >
       {eyebrow && (
         <motion.p
           variants={fadeInUp}
-          className="text-gold-500 font-bold uppercase mb-4"
-          style={{ fontSize: 11, letterSpacing: '0.12em', fontFamily: "'Inter', sans-serif" }}
+          className="text-gold-400 font-bold uppercase mb-5"
+          style={{ fontSize: 11, letterSpacing: '0.22em', fontFamily: "'Inter', sans-serif" }}
         >
           {eyebrow}
         </motion.p>
@@ -30,10 +30,10 @@ export function SectionHeading({ eyebrow, title, subtitle, align = 'left' }: Sec
         <motion.h2
           variants={{
             hidden: { opacity: 0, y: '100%' },
-            visible: { opacity: 1, y: '0%', transition: { duration: 0.65, ease: EASE_OUT_EXPO } },
+            visible: { opacity: 1, y: '0%', transition: { duration: 0.75, ease: EASE_OUT_EXPO } },
           }}
           style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: '0.02em' }}
-          className="text-[clamp(48px,6vw,80px)] font-normal text-neutral-50 leading-none"
+          className="text-[clamp(52px,7vw,96px)] font-normal text-neutral-50 leading-none"
         >
           {title}
         </motion.h2>
@@ -41,8 +41,8 @@ export function SectionHeading({ eyebrow, title, subtitle, align = 'left' }: Sec
       {subtitle && (
         <motion.p
           variants={fadeInUp}
-          className="mt-5 text-neutral-400 text-lg leading-relaxed max-w-2xl"
-          style={{ fontFamily: "'Inter', sans-serif" }}
+          className="mt-6 text-neutral-300 leading-relaxed max-w-2xl"
+          style={{ fontFamily: "'Inter', sans-serif", fontSize: 18 }}
         >
           {subtitle}
         </motion.p>

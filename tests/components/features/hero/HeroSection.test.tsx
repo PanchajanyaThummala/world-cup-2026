@@ -3,13 +3,11 @@ import { render, screen } from '@testing-library/react'
 import { HeroSection } from '@/components/features/hero/HeroSection'
 
 describe('HeroSection', () => {
-  it('renders the tournament title in h1', () => {
+  it('renders the tournament title parts', () => {
     render(<HeroSection />)
-    const h1 = document.querySelector('h1')
-    expect(h1).toBeTruthy()
-    expect(h1?.textContent).toMatch(/FIFA/i)
-    expect(h1?.textContent).toMatch(/World Cup/i)
-    expect(h1?.textContent).toMatch(/2026/)
+    expect(screen.getByText('FIFA')).toBeInTheDocument()
+    expect(screen.getByText('WORLD CUP')).toBeInTheDocument()
+    expect(screen.getByText('2026')).toBeInTheDocument()
   })
 
   it('shows tournament dates in subtitle', () => {

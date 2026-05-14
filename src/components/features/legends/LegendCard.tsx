@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import type { Legend } from '@/types'
 import { Badge } from '@/components/ui/Badge'
-import { scaleIn } from '@/lib/motion'
+import { EASE_OUT_EXPO } from '@/lib/motion'
 
 interface LegendCardProps {
   legend: Legend
@@ -9,16 +9,30 @@ interface LegendCardProps {
   index: number
 }
 
+// T009: cinematic focus-in — scale 0.85 + blur 4px → 1 + clear
+const focusInVariants = {
+  hidden: { opacity: 0, scale: 0.85, filter: 'blur(8px)' },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    filter: 'blur(0px)',
+    transition: { duration: 0.8, ease: EASE_OUT_EXPO },
+  },
+}
+
 export function LegendCard({ legend, featured = false, index }: LegendCardProps) {
   return (
     <motion.div
-      variants={scaleIn}
+      variants={focusInVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-40px' }}
-      transition={{ delay: index * 0.07 }}
-      className={`group relative overflow-hidden rounded-xl ${featured ? 'min-h-[480px]' : 'min-h-[300px]'}`}
-      style={{ border: '1px solid rgba(31,41,55,0.8)' }}
+      transition={{ delay: index * 0.08 }}
+      className={`group relative overflow-hidden rounded-2xl ${featured ? 'min-h-[520px]' : 'min-h-[320px]'}`}
+      style={{
+        border: '1px solid rgba(201, 168, 76, 0.12)',
+        boxShadow: '0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04)',
+      }}
     >
       {/* Photo or gradient background */}
       {legend.photo ? (

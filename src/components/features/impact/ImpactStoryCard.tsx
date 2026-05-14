@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import type { ImpactStory } from '@/types'
+import { Card } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
 import { scaleIn } from '@/lib/motion'
 
@@ -16,22 +17,32 @@ export function ImpactStoryCard({ story, index }: ImpactStoryCardProps) {
       whileInView="visible"
       viewport={{ once: true, margin: '-40px' }}
       transition={{ delay: index * 0.06 }}
-      whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      className="group relative bg-neutral-900 border border-neutral-800 rounded-xl p-6 hover:border-gold-500/40 transition-colors duration-300 overflow-hidden"
     >
-      {/* Gold left border accent on hover */}
-      <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gold-500 scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-center" />
+      <Card hover className="p-7 h-full relative overflow-hidden">
+        {/* Gold left accent bar */}
+        <div
+          className="absolute left-0 top-6 bottom-6 w-0.5"
+          style={{ background: 'linear-gradient(to bottom, transparent, rgba(201,168,76,0.6), transparent)' }}
+        />
 
-      <div className="flex items-start justify-between gap-3 mb-4">
-        <div>
-          <p className="text-neutral-600 text-xs mb-1">{story.tournament}</p>
-          <Badge label={story.eraBadge} variant="gold" />
+        <div className="flex items-start justify-between gap-3 mb-4">
+          <div>
+            <p className="text-neutral-500 text-xs mb-2 uppercase tracking-widest" style={{ letterSpacing: '0.12em' }}>
+              {story.tournament}
+            </p>
+            <Badge label={story.eraBadge} variant="gold" size="md" />
+          </div>
+          <Badge label={story.category} variant="outline" />
         </div>
-        <Badge label={story.category} variant="outline" />
-      </div>
 
-      <h3 className="text-neutral-100 font-bold text-lg leading-snug mb-3">{story.title}</h3>
-      <p className="text-neutral-400 text-sm leading-relaxed">{story.narrative}</p>
+        <h3
+          className="text-neutral-50 font-bold text-xl leading-snug mb-4"
+          style={{ fontFamily: "'Inter', sans-serif" }}
+        >
+          {story.title}
+        </h3>
+        <p className="text-neutral-400 text-sm leading-relaxed">{story.narrative}</p>
+      </Card>
     </motion.div>
   )
 }
