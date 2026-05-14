@@ -26,31 +26,30 @@ export function MomentCard({ moment, side, index }: MomentCardProps) {
       {/* Year marker */}
       <div className="flex-shrink-0 md:w-28 flex flex-col items-start md:items-end gap-1 pt-1">
         <span
-          style={{ fontFamily: "'Oswald', sans-serif" }}
-          className="text-gold-400 font-bold text-4xl leading-none"
+          style={{ fontFamily: "'Oswald', sans-serif", fontSize: 40, lineHeight: 1, fontWeight: 600 }}
+          className="text-gold-400"
         >
           {moment.year}
         </span>
         <span className="text-neutral-600 text-xs uppercase tracking-wider">{moment.host}</span>
       </div>
 
-      {/* Card — overflow visible on outer wrapper so significance line never clips.
-          The photo header below has its own overflow-hidden scope. */}
+      {/* Card — NO overflow:hidden so significance line is never clipped */}
       <motion.div
         whileHover={{ y: -4 }}
         transition={{ duration: 0.2 }}
         className="flex-1 rounded-xl"
         style={{
           border: '1px solid rgba(31,41,55,0.8)',
-          background: 'rgba(13,17,23,0.9)',
+          background: 'rgba(13,17,23,0.95)',
           minWidth: 0,
         }}
       >
-        {/* Photo header (own clipping scope, rounded top corners) */}
+        {/* Photo header — own clipping scope for rounded corners */}
         {moment.photo ? (
           <div
-            className="relative h-40 overflow-hidden"
-            style={{ borderTopLeftRadius: 11, borderTopRightRadius: 11 }}
+            className="relative overflow-hidden"
+            style={{ height: 160, borderTopLeftRadius: 11, borderTopRightRadius: 11 }}
           >
             <img
               src={`/${moment.photo}`}
@@ -59,54 +58,53 @@ export function MomentCard({ moment, side, index }: MomentCardProps) {
               height={320}
               loading="lazy"
               className="w-full h-full object-cover object-center"
-              style={{ filter: 'brightness(0.7) saturate(0.6)' }}
+              style={{ filter: 'brightness(0.65) saturate(0.55)' }}
             />
             <div
               className="absolute inset-0"
-              style={{ background: 'linear-gradient(to bottom, transparent 40%, rgba(13,17,23,0.95) 100%)' }}
+              style={{ background: 'linear-gradient(to bottom, transparent 30%, rgba(13,17,23,0.97) 100%)' }}
             />
           </div>
         ) : (
+          /* Thin accent bar — no year text, year already shown in left column */
           <div
-            className="h-16 flex items-center px-6 relative overflow-hidden"
             style={{
-              background: 'linear-gradient(135deg, #1F2937 0%, #161B26 100%)',
+              height: 4,
+              background: 'linear-gradient(90deg, rgba(201,168,76,0.4), rgba(201,168,76,0.1), transparent)',
               borderTopLeftRadius: 11,
               borderTopRightRadius: 11,
             }}
-          >
-            <span
-              className="text-gold-900 font-bold select-none"
-              style={{ fontFamily: "'Oswald', sans-serif", fontSize: 40, opacity: 0.4, position: 'relative', zIndex: 0 }}
-            >
-              {moment.year}
-            </span>
-          </div>
+          />
         )}
 
-        {/* Body — generous padding, content drives height */}
-        <div className="p-6" style={{ position: 'relative', zIndex: 1 }}>
-          <div className="flex items-center gap-2 mb-4 flex-wrap">
+        {/* Body — 32px padding, no constraints, content drives height */}
+        <div style={{ padding: 'var(--card-padding, 32px)' }}>
+          <div className="flex flex-wrap items-center gap-2 mb-4">
             <Badge label={moment.era} variant="gold" />
             <Badge label={moment.category} variant="neutral" />
           </div>
+
           <h3
-            className="text-neutral-50 text-xl font-bold mb-3 leading-snug"
-            style={{ fontFamily: "'Inter', sans-serif" }}
+            className="text-neutral-50 font-bold mb-4"
+            style={{ fontFamily: "'Inter', sans-serif", fontSize: 18, lineHeight: 1.35, overflowWrap: 'anywhere' }}
           >
             {moment.title}
           </h3>
+
           <p
-            className="text-neutral-400 text-sm mb-4"
-            style={{ lineHeight: 1.65, overflowWrap: 'anywhere' }}
+            className="text-neutral-400"
+            style={{ fontSize: 14, lineHeight: 1.7, overflowWrap: 'anywhere' }}
           >
             {moment.narrative}
           </p>
+
+          {/* Significance — always visible, separated by top border */}
           <p
-            className="text-neutral-500 text-xs italic mt-4 pt-4"
+            className="text-neutral-500 italic mt-5 pt-5"
             style={{
+              fontSize: 13,
               lineHeight: 1.65,
-              borderTop: '1px solid rgba(31,41,55,0.6)',
+              borderTop: '1px solid rgba(31,41,55,0.7)',
               overflowWrap: 'anywhere',
             }}
           >

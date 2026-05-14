@@ -94,11 +94,11 @@ body {
   color: #F9FAFB;
 }
 
-/* Prevent text from ever escaping card padding */
-p, h1, h2, h3, h4, h5, h6, span, li {
+/* Prevent text from ever escaping card padding.
+   NOTE: span excluded from min-width:0 — it breaks flex table cells (flag+name) */
+p, h1, h2, h3, h4, h5, h6, li {
   overflow-wrap: anywhere;
   word-break: break-word;
-  min-width: 0;
 }
 
 /* Custom scrollbar */

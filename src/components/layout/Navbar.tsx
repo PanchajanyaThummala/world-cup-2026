@@ -20,23 +20,31 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60)
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) setActiveSection(entry.target.id)
-        })
-      },
-      { threshold: 0.3 },
-    )
-    NAV_SECTIONS.forEach(({ id }) => {
-      const el = document.getElementById(id)
-      if (el) observer.observe(el)
-    })
-    window.addEventListener('scroll', handleScroll)
+    const updateActive = () => {
+      setScrolled(window.scrollY > 60)
+
+      // getBoundingClientRect().top < threshold → section is above the trigger line.
+      // threshold = 45% of viewport height from top.
+      const threshold = window.innerHeight * 0.45
+      let current = NAV_SECTIONS[0].id
+
+      for (const { id } of NAV_SECTIONS) {
+        const el = document.getElementById(id)
+        if (!el) continue
+        const { top } = el.getBoundingClientRect()
+        if (top < threshold) current = id
+      }
+
+      setActiveSection(current)
+    }
+
+    window.addEventListener('scroll', updateActive, { passive: true })
+    // Also update on resize
+    window.addEventListener('resize', updateActive, { passive: true })
+    updateActive()
     return () => {
-      observer.disconnect()
-      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('scroll', updateActive)
+      window.removeEventListener('resize', updateActive)
     }
   }, [])
 

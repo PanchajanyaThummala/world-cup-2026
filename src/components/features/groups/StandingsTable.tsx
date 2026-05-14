@@ -7,29 +7,25 @@ interface StandingsTableProps {
 }
 
 export function StandingsTable({ standings, compact = false }: StandingsTableProps) {
-  // Gold qualifier treatment only after at least one match has been played
   const tournamentStarted = standings.some(s => s.mp > 0)
 
   return (
-    <table className="w-full text-sm" style={{ tableLayout: 'fixed' }}>
+    <table className="w-full" style={{ tableLayout: 'fixed', borderCollapse: 'collapse' }}>
       <colgroup>
-        <col style={{ width: '44%' }} />
-        <col style={{ width: '9%' }} />
-        <col style={{ width: '9%' }} />
-        <col style={{ width: '9%' }} />
-        <col style={{ width: '9%' }} />
-        {!compact && <col style={{ width: '9%' }} />}
-        <col style={{ width: '11%' }} />
+        <col style={{ width: '38%' }} />
+        <col /><col /><col /><col />
+        {!compact && <col />}
+        <col />
       </colgroup>
       <thead>
-        <tr className="text-neutral-600 border-b border-neutral-800/80" style={{ fontSize: 10, letterSpacing: '0.1em' }}>
-          <th className="text-left pb-2 px-2 font-medium uppercase">Team</th>
-          <th className="text-center pb-2 px-2 font-medium uppercase">MP</th>
-          <th className="text-center pb-2 px-2 font-medium uppercase">W</th>
-          <th className="text-center pb-2 px-2 font-medium uppercase">D</th>
-          <th className="text-center pb-2 px-2 font-medium uppercase">L</th>
-          {!compact && <th className="text-center pb-2 px-2 font-medium uppercase">GD</th>}
-          <th className="text-center pb-2 px-2 font-medium uppercase">Pts</th>
+        <tr className="text-neutral-600 border-b border-neutral-800/80" style={{ fontSize: 10 }}>
+          <th className="text-left pb-2 font-semibold uppercase tracking-wider">Team</th>
+          <th className="text-center pb-2 font-semibold uppercase">MP</th>
+          <th className="text-center pb-2 font-semibold uppercase">W</th>
+          <th className="text-center pb-2 font-semibold uppercase">D</th>
+          <th className="text-center pb-2 font-semibold uppercase">L</th>
+          {!compact && <th className="text-center pb-2 font-semibold uppercase">GD</th>}
+          <th className="text-center pb-2 font-semibold uppercase">Pts</th>
         </tr>
       </thead>
       <tbody>
@@ -39,7 +35,7 @@ export function StandingsTable({ standings, compact = false }: StandingsTablePro
             <tr
               key={s.team.code}
               className={cn(
-                'border-b border-neutral-800/40 last:border-0 transition-colors',
+                'border-b border-neutral-800/40 last:border-0',
                 isQualifier ? 'text-neutral-100' : 'text-neutral-300',
               )}
               style={isQualifier ? {
@@ -47,35 +43,45 @@ export function StandingsTable({ standings, compact = false }: StandingsTablePro
                 boxShadow: 'inset 2px 0 0 rgba(201,168,76,0.5)',
               } : undefined}
             >
-              <td className="py-3 px-2">
-                <div className="flex items-center gap-2 min-w-0">
-                  <span aria-hidden="true" className="text-base leading-none flex-shrink-0">{s.team.flag}</span>
-                  <span
-                    className={cn(
-                      'text-xs leading-tight',
-                      isQualifier ? 'font-semibold text-neutral-50' : 'font-medium',
-                    )}
-                    style={{ fontFamily: "'Inter', sans-serif", overflowWrap: 'anywhere', minWidth: 0 }}
-                  >
-                    {s.team.name}
+              <td className="py-2.5 pr-1">
+                {/* Flag + label always on ONE line */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, overflow: 'hidden' }}>
+                  <span aria-hidden="true" style={{ fontSize: 13, lineHeight: 1, flexShrink: 0 }}>
+                    {s.team.flag}
                   </span>
+                  {compact ? (
+                    /* Compact: 3-letter FIFA code — always fits on one line */
+                    <span
+                      title={s.team.name}
+                      className={cn(isQualifier ? 'font-bold text-neutral-50' : 'font-semibold')}
+                      style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, letterSpacing: '0.05em', whiteSpace: 'nowrap' }}
+                    >
+                      {s.team.code}
+                    </span>
+                  ) : (
+                    /* Full: name truncated with ellipsis */
+                    <span
+                      title={s.team.name}
+                      className={cn(isQualifier ? 'font-semibold text-neutral-50' : 'font-medium')}
+                      style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', minWidth: 0, flex: 1 }}
+                    >
+                      {s.team.name}
+                    </span>
+                  )}
                 </div>
               </td>
-              <td className="text-center py-3 px-2 tabular-nums" style={{ fontSize: 12 }}>{s.mp}</td>
-              <td className="text-center py-3 px-2 tabular-nums" style={{ fontSize: 12 }}>{s.w}</td>
-              <td className="text-center py-3 px-2 tabular-nums" style={{ fontSize: 12 }}>{s.d}</td>
-              <td className="text-center py-3 px-2 tabular-nums" style={{ fontSize: 12 }}>{s.l}</td>
+              <td className="text-center py-2.5 tabular-nums" style={{ fontSize: 11 }}>{s.mp}</td>
+              <td className="text-center py-2.5 tabular-nums" style={{ fontSize: 11 }}>{s.w}</td>
+              <td className="text-center py-2.5 tabular-nums" style={{ fontSize: 11 }}>{s.d}</td>
+              <td className="text-center py-2.5 tabular-nums" style={{ fontSize: 11 }}>{s.l}</td>
               {!compact && (
-                <td className="text-center py-3 px-2 tabular-nums" style={{ fontSize: 12 }}>
+                <td className="text-center py-2.5 tabular-nums" style={{ fontSize: 11 }}>
                   {s.gd >= 0 ? `+${s.gd}` : s.gd}
                 </td>
               )}
               <td
-                className={cn(
-                  'text-center py-3 px-2 tabular-nums font-bold',
-                  isQualifier ? 'text-gold-400' : 'text-neutral-400',
-                )}
-                style={{ fontSize: 13 }}
+                className={cn('text-center py-2.5 tabular-nums font-bold', isQualifier ? 'text-gold-400' : 'text-neutral-400')}
+                style={{ fontSize: 12 }}
               >
                 {s.pts}
               </td>
