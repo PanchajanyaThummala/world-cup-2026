@@ -21,7 +21,7 @@ export function LegendsSection() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="grid gap-4"
+        className="grid gap-8"
         style={{
           gridTemplateColumns: 'repeat(3, 1fr)',
           gridTemplateRows: 'auto',
@@ -42,7 +42,7 @@ export function LegendsSection() {
 
       {/* Sixth legend — full width strip */}
       {rest[4] && (
-        <div className="mt-4">
+        <div className="mt-8">
           <LegendCard legend={rest[4]} index={5} />
         </div>
       )}

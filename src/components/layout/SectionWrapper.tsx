@@ -10,9 +10,23 @@ interface SectionWrapperProps {
 
 export function SectionWrapper({ id, children, className, style, fullBleed = false }: SectionWrapperProps) {
   return (
-    <section id={id} className={cn('py-32 md:py-40 relative overflow-hidden', className)} style={style}>
+    <section
+      id={id}
+      className={cn('relative overflow-hidden', className)}
+      style={{
+        paddingTop: 'var(--section-py)',
+        paddingBottom: 'var(--section-py)',
+        ...style,
+      }}
+    >
       {fullBleed ? children : (
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div
+          className="max-w-7xl mx-auto"
+          style={{
+            paddingLeft: 'var(--gutter-x)',
+            paddingRight: 'var(--gutter-x)',
+          }}
+        >
           {children}
         </div>
       )}

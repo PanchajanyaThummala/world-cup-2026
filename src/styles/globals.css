@@ -34,6 +34,39 @@
   --spacing: 8px;
 }
 
+/* Layout rhythm tokens — unified vertical spacing, banner height, horizontal gutter */
+:root {
+  --section-py: 64px;
+  --banner-h: 56px;
+  --gutter-x: 16px;
+  --card-padding: 32px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --gutter-x: 24px;
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --section-py: 96px;
+    --banner-h: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --gutter-x: 56px;
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --gutter-x: 72px;
+  }
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -50,7 +83,22 @@ body {
   background-color: #080A0F;
   color: #E5E7EB;
   font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: -0.005em;
   overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(201, 168, 76, 0.3);
+  color: #F9FAFB;
+}
+
+/* Prevent text from ever escaping card padding.
+   NOTE: span excluded from min-width:0 — it breaks flex table cells (flag+name) */
+p, h1, h2, h3, h4, h5, h6, li {
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 /* Custom scrollbar */

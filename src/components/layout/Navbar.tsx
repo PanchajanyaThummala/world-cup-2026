@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { SoccerBall } from '@/components/ui/SoccerBall'
+import { MobileNav } from './MobileNav'
 
 const NAV_SECTIONS = [
   { id: 'hero', label: 'Home' },
@@ -19,23 +20,31 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60)
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) setActiveSection(entry.target.id)
-        })
-      },
-      { threshold: 0.3 },
-    )
-    NAV_SECTIONS.forEach(({ id }) => {
-      const el = document.getElementById(id)
-      if (el) observer.observe(el)
-    })
-    window.addEventListener('scroll', handleScroll)
+    const updateActive = () => {
+      setScrolled(window.scrollY > 60)
+
+      // getBoundingClientRect().top < threshold → section is above the trigger line.
+      // threshold = 45% of viewport height from top.
+      const threshold = window.innerHeight * 0.45
+      let current = NAV_SECTIONS[0].id
+
+      for (const { id } of NAV_SECTIONS) {
+        const el = document.getElementById(id)
+        if (!el) continue
+        const { top } = el.getBoundingClientRect()
+        if (top < threshold) current = id
+      }
+
+      setActiveSection(current)
+    }
+
+    window.addEventListener('scroll', updateActive, { passive: true })
+    // Also update on resize
+    window.addEventListener('resize', updateActive, { passive: true })
+    updateActive()
     return () => {
-      observer.disconnect()
-      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('scroll', updateActive)
+      window.removeEventListener('resize', updateActive)
     }
   }, [])
 
@@ -47,19 +56,25 @@ export function Navbar() {
     <motion.nav
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        'fixed left-0 right-0 z-50 transition-all duration-300',
         scrolled
           ? 'border-b border-neutral-800/60'
           : 'bg-transparent',
       )}
-      style={scrolled ? {
-        background: 'rgba(8,10,15,0.85)',
-        backdropFilter: 'blur(16px)',
-      } : {}}
+      style={{
+        top: 'var(--banner-h)',
+        ...(scrolled ? {
+          background: 'rgba(8,10,15,0.85)',
+          backdropFilter: 'blur(16px)',
+        } : {}),
+      }}
     >
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div
+        className="max-w-7xl mx-auto h-16 flex items-center justify-between"
+        style={{ paddingLeft: 'var(--gutter-x)', paddingRight: 'var(--gutter-x)' }}
+      >
         <button
           onClick={() => scrollTo('hero')}
           className="flex items-center gap-2.5 group"
@@ -74,17 +89,17 @@ export function Navbar() {
           </span>
         </button>
 
-        <ul className="hidden md:flex items-center gap-1">
+        <ul className="hidden lg:flex items-center gap-1">
           {NAV_SECTIONS.map(({ id, label }) => (
             <li key={id}>
               <button
                 onClick={() => scrollTo(id)}
                 aria-label={`Navigate to ${label}`}
                 className={cn(
-                  'relative px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors duration-200',
+                  'relative px-4 py-2 text-sm font-medium transition-colors duration-200',
                   activeSection === id ? 'text-gold-400' : 'text-neutral-500 hover:text-neutral-200',
                 )}
-                style={{ letterSpacing: '0.08em', fontFamily: "'Inter', sans-serif" }}
+                style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {activeSection === id && (
                   <motion.span
@@ -99,6 +114,9 @@ export function Navbar() {
             </li>
           ))}
         </ul>
+
+        {/* Mobile hamburger — visible below lg */}
+        <MobileNav sections={NAV_SECTIONS} activeSection={activeSection} />
       </div>
     </motion.nav>
   )

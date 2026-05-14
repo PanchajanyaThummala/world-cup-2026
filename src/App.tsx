@@ -1,4 +1,5 @@
 import { CursorFollower } from '@/components/ui/CursorFollower'
+import { CountdownBanner } from '@/components/layout/CountdownBanner'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { HeroSection } from '@/components/features/hero/HeroSection'
@@ -15,6 +16,7 @@ export default function App() {
   return (
     <div style={{ background: '#080A0F', minHeight: '100vh', color: '#E5E7EB' }}>
       <CursorFollower />
+      <CountdownBanner />
       <Navbar />
       <main>
         <HeroSection />

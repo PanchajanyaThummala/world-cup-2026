@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import type { Legend } from '@/types'
 import { Badge } from '@/components/ui/Badge'
-import { scaleIn } from '@/lib/motion'
+import { EASE_OUT_EXPO } from '@/lib/motion'
 
 interface LegendCardProps {
   legend: Legend
@@ -9,16 +9,30 @@ interface LegendCardProps {
   index: number
 }
 
+// T009: cinematic focus-in — scale 0.85 + blur 4px → 1 + clear
+const focusInVariants = {
+  hidden: { opacity: 0, scale: 0.85, filter: 'blur(8px)' },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    filter: 'blur(0px)',
+    transition: { duration: 0.8, ease: EASE_OUT_EXPO },
+  },
+}
+
 export function LegendCard({ legend, featured = false, index }: LegendCardProps) {
   return (
     <motion.div
-      variants={scaleIn}
+      variants={focusInVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-40px' }}
-      transition={{ delay: index * 0.07 }}
-      className={`group relative overflow-hidden rounded-xl ${featured ? 'min-h-[480px]' : 'min-h-[300px]'}`}
-      style={{ border: '1px solid rgba(31,41,55,0.8)' }}
+      transition={{ delay: index * 0.08 }}
+      className={`group relative overflow-hidden rounded-2xl ${featured ? 'min-h-[520px]' : 'min-h-[320px]'}`}
+      style={{
+        border: '1px solid rgba(201, 168, 76, 0.12)',
+        boxShadow: '0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04)',
+      }}
     >
       {/* Photo or gradient background */}
       {legend.photo ? (
@@ -59,8 +73,11 @@ export function LegendCard({ legend, featured = false, index }: LegendCardProps)
         </div>
       )}
 
-      {/* Content overlay */}
-      <div className="absolute inset-0 flex flex-col justify-end p-6">
+      {/* Content overlay — explicit z-10 so it always renders above photo / gradient bg */}
+      <div
+        className="absolute inset-0 flex flex-col justify-end z-10"
+        style={{ padding: 'var(--card-padding, 32px)' }}
+      >
         <Badge label={legend.era} variant="gold" size="sm" />
         <motion.h3
           whileHover={{ color: '#E2C267' }}
@@ -76,10 +93,10 @@ export function LegendCard({ legend, featured = false, index }: LegendCardProps)
         >
           {legend.name}
         </motion.h3>
-        <p className="text-neutral-400 text-sm mt-1">
-          <span role="img" aria-label={legend.nation}>{legend.flag}</span>
-          {' '}{legend.nation}
-        </p>
+        <div className="flex items-center gap-2 mt-1 text-neutral-400 text-sm">
+          <span aria-hidden="true">{legend.flag}</span>
+          <span>{legend.nation}</span>
+        </div>
         {featured && (
           <p className="text-neutral-500 text-sm mt-3 leading-relaxed">{legend.description}</p>
         )}

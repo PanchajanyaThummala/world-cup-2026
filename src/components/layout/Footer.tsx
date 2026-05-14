@@ -6,7 +6,10 @@ export function Footer() {
       className="relative border-t py-16 overflow-hidden"
       style={{ borderColor: 'rgba(31,41,55,0.6)', background: '#080A0F' }}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-8">
+      <div
+        className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8"
+        style={{ paddingLeft: 'var(--gutter-x)', paddingRight: 'var(--gutter-x)' }}
+      >
         <div className="flex items-center gap-4">
           <SoccerBall size={40} glow spin />
           <div>

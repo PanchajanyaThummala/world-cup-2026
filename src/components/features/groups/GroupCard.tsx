@@ -2,24 +2,51 @@ import { motion } from 'framer-motion'
 import type { Group } from '@/types'
 import { Card } from '@/components/ui/Card'
 import { StandingsTable } from './StandingsTable'
-import { scaleIn } from '@/lib/motion'
+import { EASE_OUT_EXPO } from '@/lib/motion'
 
 interface GroupCardProps {
   group: Group
 }
 
+const flipInVariants = {
+  hidden: { opacity: 0, rotateY: -12, y: 24 },
+  visible: {
+    opacity: 1,
+    rotateY: 0,
+    y: 0,
+    transition: { duration: 0.7, ease: EASE_OUT_EXPO },
+  },
+}
+
 export function GroupCard({ group }: GroupCardProps) {
   return (
     <motion.div
-      variants={scaleIn}
+      variants={flipInVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-40px' }}
+      style={{ perspective: 1000, transformStyle: 'preserve-3d' }}
+      className="h-full min-w-0"
     >
-      <Card hover className="p-4">
-        <div className="flex items-center gap-2 mb-4">
-          <span className="text-gold-400 font-black text-xl">{group.label}</span>
-          <span className="text-neutral-600 text-sm">{group.name}</span>
+      <Card hover className="h-full flex flex-col">
+        <div className="flex items-baseline gap-3 mb-6">
+          <span
+            style={{
+              fontFamily: "'Bebas Neue', sans-serif",
+              fontSize: 36,
+              lineHeight: 1,
+              letterSpacing: 0,
+            }}
+            className="text-gold-400"
+          >
+            {group.label}
+          </span>
+          <span
+            className="text-neutral-500 uppercase"
+            style={{ fontSize: 11, letterSpacing: '0.12em', fontFamily: "'Inter', sans-serif" }}
+          >
+            Group
+          </span>
         </div>
         <StandingsTable standings={group.standings} compact />
       </Card>
