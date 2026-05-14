@@ -15,7 +15,7 @@ export function SectionHeading({ eyebrow, title, subtitle, align = 'left' }: Sec
       whileInView="visible"
       viewport={{ once: true, margin: '-60px' }}
       variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12 } } }}
-      className={`mb-20 ${align === 'center' ? 'text-center' : 'text-left'}`}
+      className={`mb-16 ${align === 'center' ? 'text-center' : 'text-left'}`}
     >
       {eyebrow && (
         <motion.p

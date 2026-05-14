@@ -90,10 +90,10 @@ export function LegendCard({ legend, featured = false, index }: LegendCardProps)
         >
           {legend.name}
         </motion.h3>
-        <p className="text-neutral-400 text-sm mt-1">
-          <span role="img" aria-label={legend.nation}>{legend.flag}</span>
-          {' '}{legend.nation}
-        </p>
+        <div className="flex items-center gap-2 mt-1 text-neutral-400 text-sm">
+          <span aria-hidden="true">{legend.flag}</span>
+          <span>{legend.nation}</span>
+        </div>
         {featured && (
           <p className="text-neutral-500 text-sm mt-3 leading-relaxed">{legend.description}</p>
         )}

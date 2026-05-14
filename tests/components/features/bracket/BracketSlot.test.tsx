@@ -13,9 +13,9 @@ const playedSlot: KnockoutSlot = {
 }
 
 describe('BracketSlot', () => {
-  it('renders TBD for empty slots', () => {
+  it('renders empty-state "Awaiting" label when both teams are TBD', () => {
     render(<BracketSlot slot={tbdSlot} teams={TEAMS} />)
-    expect(screen.getAllByText('TBD').length).toBe(2)
+    expect(screen.getByText(/awaiting/i)).toBeInTheDocument()
   })
 
   it('resolves team codes to team names', () => {

@@ -141,18 +141,27 @@ export function HeroSection() {
         >
           <motion.button
             onClick={() => document.getElementById('groups')?.scrollIntoView({ behavior: 'smooth' })}
-            whileHover={{ scale: 1.04 }}
+            whileHover={{ scale: 1.04, y: -2 }}
             whileTap={{ scale: 0.97 }}
-            className="px-8 py-4 font-bold text-sm uppercase tracking-widest text-neutral-950"
+            animate={shouldReduce ? {} : {
+              boxShadow: [
+                '0 0 24px rgba(201,168,76,0.25)',
+                '0 0 40px rgba(201,168,76,0.5)',
+                '0 0 24px rgba(201,168,76,0.25)',
+              ],
+            }}
+            transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
+            className="font-bold text-neutral-950"
             style={{
               fontFamily: "'Inter', sans-serif",
-              letterSpacing: '0.14em',
+              fontSize: 14,
+              letterSpacing: '0.06em',
+              padding: '14px 40px',
               background: 'linear-gradient(135deg, #F0D98B 0%, #C9A84C 60%, #A8842A 100%)',
-              borderRadius: 6,
-              boxShadow: '0 0 32px rgba(201,168,76,0.35)',
+              borderRadius: 8,
             }}
           >
-            Explore the Tournament
+            Explore the tournament
           </motion.button>
         </motion.div>
       </motion.div>

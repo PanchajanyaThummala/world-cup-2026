@@ -47,4 +47,4 @@ description: "Premium visual overhaul — glass morphism, soccer imagery, $10k a
 
 - [x] T014 Run `npm run build` — fix any errors
 - [x] T015 Run `npm run test:run` — fix any failures
-- [ ] T016 Commit + push `003-premium-visual-overhaul` branch to GitHub
+- [x] T016 Commit + push `003-premium-visual-overhaul` branch to GitHub

@@ -47,17 +47,20 @@ export function Navbar() {
     <motion.nav
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+        'fixed left-0 right-0 z-50 transition-all duration-300',
         scrolled
           ? 'border-b border-neutral-800/60'
           : 'bg-transparent',
       )}
-      style={scrolled ? {
-        background: 'rgba(8,10,15,0.85)',
-        backdropFilter: 'blur(16px)',
-      } : {}}
+      style={{
+        top: 'var(--banner-h)',
+        ...(scrolled ? {
+          background: 'rgba(8,10,15,0.85)',
+          backdropFilter: 'blur(16px)',
+        } : {}),
+      }}
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <button
@@ -81,10 +84,10 @@ export function Navbar() {
                 onClick={() => scrollTo(id)}
                 aria-label={`Navigate to ${label}`}
                 className={cn(
-                  'relative px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors duration-200',
+                  'relative px-4 py-2 text-sm font-medium transition-colors duration-200',
                   activeSection === id ? 'text-gold-400' : 'text-neutral-500 hover:text-neutral-200',
                 )}
-                style={{ letterSpacing: '0.08em', fontFamily: "'Inter', sans-serif" }}
+                style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {activeSection === id && (
                   <motion.span

@@ -19,9 +19,10 @@ describe('GroupCard', () => {
     })
   })
 
-  it('renders team flag emojis', () => {
-    render(<GroupCard group={GROUPS[0]} />)
-    const flags = screen.getAllByRole('img')
-    expect(flags.length).toBeGreaterThanOrEqual(4)
+  it('renders team flag emojis as decorative spans', () => {
+    const { container } = render(<GroupCard group={GROUPS[0]} />)
+    // Flags are now aria-hidden decorative; check 4 are present alongside team names
+    const flagSpans = container.querySelectorAll('span[aria-hidden="true"]')
+    expect(flagSpans.length).toBeGreaterThanOrEqual(4)
   })
 })

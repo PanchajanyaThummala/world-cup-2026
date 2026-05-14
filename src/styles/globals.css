@@ -34,6 +34,19 @@
   --spacing: 8px;
 }
 
+/* Layout rhythm tokens — unified vertical spacing & banner height */
+:root {
+  --section-py: 64px;
+  --banner-h: 48px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --section-py: 96px;
+    --banner-h: 36px;
+  }
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
