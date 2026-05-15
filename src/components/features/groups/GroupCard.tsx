@@ -24,7 +24,7 @@ export function GroupCard({ group }: GroupCardProps) {
       variants={slideInVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-40px' }}
+      viewport={{ once: false, margin: '-40px' }}
       className="h-full min-w-0"
     >
       <Card hover className="h-full flex flex-col" style={{ padding: '20px 20px 16px' }}>

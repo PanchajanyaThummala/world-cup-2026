@@ -20,7 +20,7 @@ export function LegendsSection() {
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true }}
+        viewport={{ once: false }}
         className="grid gap-8"
         style={{
           gridTemplateColumns: 'repeat(3, 1fr)',

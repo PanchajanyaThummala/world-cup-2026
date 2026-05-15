@@ -13,7 +13,7 @@ export function SectionHeading({ eyebrow, title, subtitle, align = 'left' }: Sec
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-60px' }}
+      viewport={{ once: false, margin: '-60px' }}
       variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.12 } } }}
       className={`mb-16 ${align === 'center' ? 'text-center' : 'text-left'}`}
       style={{ minWidth: 0 }}
@@ -37,7 +37,7 @@ export function SectionHeading({ eyebrow, title, subtitle, align = 'left' }: Sec
           <motion.div
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.6, delay: 0.2, ease: EASE_OUT_EXPO }}
             style={{
               height: 1,

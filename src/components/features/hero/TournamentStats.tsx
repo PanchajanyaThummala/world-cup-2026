@@ -13,7 +13,7 @@ const STATS = [
 
 function Stat({ value, label, index }: { value: number; label: string; index: number }) {
   const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '-80px' })
+  const isInView = useInView(ref, { once: false, margin: '-80px' })
   const shouldReduce = useReducedMotion()
   const [count, setCount] = useState(0)
   const [completed, setCompleted] = useState(false)

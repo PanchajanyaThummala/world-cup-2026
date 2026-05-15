@@ -15,7 +15,7 @@ export function ImpactStoryCard({ story, index }: ImpactStoryCardProps) {
       variants={scaleIn}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-40px' }}
+      viewport={{ once: false, margin: '-40px' }}
       transition={{ delay: index * 0.06 }}
       className="min-w-0"
     >

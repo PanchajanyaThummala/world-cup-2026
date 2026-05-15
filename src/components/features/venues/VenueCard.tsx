@@ -16,7 +16,7 @@ export function VenueCard({ venue, showCapacity = true }: VenueCardProps) {
       variants={fadeInUp}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-30px' }}
+      viewport={{ once: false, margin: '-30px' }}
       className="min-w-0 h-full"
     >
       <Card hover className="h-full flex flex-col gap-5">

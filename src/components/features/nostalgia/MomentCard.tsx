@@ -19,7 +19,7 @@ export function MomentCard({ moment, side, index }: MomentCardProps) {
       variants={variants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-60px' }}
+      viewport={{ once: false, margin: '-60px' }}
       transition={{ delay: index * 0.04 }}
       className={`flex ${side === 'right' ? 'md:flex-row-reverse' : 'md:flex-row'} flex-col gap-8 items-start`}
     >
