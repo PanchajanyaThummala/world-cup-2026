@@ -4,11 +4,12 @@ import { cn } from '@/lib/utils'
 interface CardProps {
   children: React.ReactNode
   className?: string
+  style?: React.CSSProperties
   hover?: boolean
   onClick?: () => void
 }
 
-export function Card({ children, className, hover = false, onClick }: CardProps) {
+export function Card({ children, className, style: styleProp, hover = false, onClick }: CardProps) {
   return (
     <motion.div
       onClick={onClick}
@@ -33,6 +34,7 @@ export function Card({ children, className, hover = false, onClick }: CardProps)
         transition: hover
           ? 'border-color 180ms ease, box-shadow 200ms ease'
           : undefined,
+        ...styleProp,
       }}
       onHoverStart={hover ? (e) => {
         const el = (e.target as HTMLElement).closest('[data-card]') as HTMLElement
