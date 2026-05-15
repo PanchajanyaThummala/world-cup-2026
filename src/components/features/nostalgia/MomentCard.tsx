@@ -26,8 +26,7 @@ export function MomentCard({ moment, side, index }: MomentCardProps) {
       {/* Year marker */}
       <div className="flex-shrink-0 md:w-28 flex flex-col items-start md:items-end gap-1 pt-1">
         <span
-          style={{ fontFamily: "'Oswald', sans-serif", fontSize: 40, lineHeight: 1, fontWeight: 600 }}
-          style={{ color: 'var(--color-primary)' }}
+          style={{ fontFamily: "'Oswald', sans-serif", fontSize: 40, lineHeight: 1, fontWeight: 600, color: 'var(--color-primary)' }}
         >
           {moment.year}
         </span>

@@ -12,6 +12,7 @@ export function GroupsSection() {
         eyebrow="48 Teams · 12 Groups"
         title="The Group Stage"
         subtitle="Every nation's journey starts here. The top two from each group advance to the Round of 32."
+        sectionNum="01"
       />
       <motion.div
         variants={staggerContainer}

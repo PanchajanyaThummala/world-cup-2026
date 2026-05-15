@@ -3,6 +3,7 @@ import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { HeroSection } from '@/components/features/hero/HeroSection'
 import { TournamentStats } from '@/components/features/hero/TournamentStats'
+import { TeamTicker } from '@/components/ui/TeamTicker'
 import { GroupsSection } from '@/components/features/groups/GroupsSection'
 import { VenuesSection } from '@/components/features/venues/VenuesSection'
 import { NostalgiaSection } from '@/components/features/nostalgia/NostalgiaSection'
@@ -18,6 +19,7 @@ export default function App() {
       <Navbar />
       <main>
         <HeroSection />
+        <TeamTicker />
         <TournamentStats />
         <GroupsSection />
         <VenuesSection />

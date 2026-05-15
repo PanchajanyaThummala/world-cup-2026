@@ -8,6 +8,7 @@ export function NostalgiaSection() {
     <SectionWrapper id="nostalgia" style={{ background: 'var(--color-bg-base)' }} glowPosition="top-right">
       <SectionHeading
         eyebrow="Since 1930"
+        sectionNum="03"
         title="Moments That Defined the Game"
         subtitle="96 years. 22 tournaments. The moments that changed football — and the world — forever."
       />

@@ -10,6 +10,7 @@ export function FactsSection() {
     <SectionWrapper id="facts" style={{ background: 'var(--color-bg-base)' }} glowPosition="top-left">
       <SectionHeading
         eyebrow="The Untold Story"
+        sectionNum="06"
         title="Facts That Will Change How You See the World Cup"
         subtitle="Records, curiosities, and forgotten heroes from 96 years of football's greatest stage."
       />

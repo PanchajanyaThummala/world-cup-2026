@@ -23,6 +23,7 @@ export function VenuesSection() {
     <SectionWrapper id="venues" style={{ background: 'var(--color-bg-surface)' }} glowPosition="top-left">
       <SectionHeading
         eyebrow="16 Stadiums · 3 Nations"
+        sectionNum="02"
         title="The Host Venues"
         subtitle="From the iconic Azteca to MetLife's record-breaking capacity — the stages are set."
       />

@@ -12,6 +12,7 @@ export function LegendsSection() {
     <SectionWrapper id="legends" style={{ background: 'var(--color-bg-base)' } as React.CSSProperties} glowPosition="top-right">
       <SectionHeading
         eyebrow="The Greats"
+        sectionNum="05"
         title="Legends of the Game"
         subtitle="They didn't just play the World Cup — they defined it. Six players who left the game permanently changed."
       />

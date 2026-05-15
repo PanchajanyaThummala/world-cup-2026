@@ -10,6 +10,7 @@ export function ImpactSection() {
     <SectionWrapper id="impact" style={{ background: 'var(--color-bg-surface)' }} glowPosition="top-left">
       <SectionHeading
         eyebrow="Beyond the Pitch"
+        sectionNum="04"
         title="How the World Cup Changed the World"
         subtitle="Politics, identity, power, and protest — the tournament that moves more than just football."
       />
