@@ -1,6 +1,5 @@
 import { useRef, useState } from 'react'
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion'
-import { SoccerBall } from '@/components/ui/SoccerBall'
 import { EASE_OUT_EXPO } from '@/lib/motion'
 
 export function HeroSection() {
@@ -196,22 +195,6 @@ export function HeroSection() {
         </motion.div>
       </motion.div>
 
-      {/* Trionda — large floating ball, right side */}
-      <motion.div
-        className="absolute right-4 md:right-12 lg:right-24 bottom-20 z-10 hidden sm:block"
-        initial={{ opacity: 0, x: 60, scale: 0.7 }}
-        animate={!shouldReduce
-          ? { opacity: 1, x: 0, scale: 1, y: [0, -22, 0] }
-          : { opacity: 1, x: 0, scale: 1 }}
-        transition={{
-          opacity: { duration: 1, delay: 1.4, ease: EASE_OUT_EXPO },
-          x: { duration: 1, delay: 1.4, ease: EASE_OUT_EXPO },
-          scale: { duration: 1, delay: 1.4, ease: EASE_OUT_EXPO },
-          y: { duration: 5.5, repeat: Infinity, ease: 'easeInOut', delay: 2.4 },
-        }}
-      >
-        <SoccerBall size={180} glow spin />
-      </motion.div>
 
       {/* Scroll cue */}
       <motion.div

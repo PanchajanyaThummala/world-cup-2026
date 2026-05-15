@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
-import { SoccerBall } from '@/components/ui/SoccerBall'
 import { MobileNav } from './MobileNav'
 
 const NAV_SECTIONS = [
@@ -81,7 +80,6 @@ export function Navbar() {
           aria-label="Go to top"
           style={{ minHeight: 44 }}
         >
-          <SoccerBall size={28} glow={false} spin />
           <img
             src="/images/logo/wc2026-logo.svg"
             alt="FIFA World Cup 2026"

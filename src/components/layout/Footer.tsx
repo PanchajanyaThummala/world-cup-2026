@@ -1,5 +1,3 @@
-import { SoccerBall } from '@/components/ui/SoccerBall'
-
 export function Footer() {
   return (
     <footer
@@ -11,7 +9,6 @@ export function Footer() {
         style={{ paddingLeft: 'var(--gutter-x)', paddingRight: 'var(--gutter-x)' }}
       >
         <div className="flex items-center gap-4">
-          <SoccerBall size={44} glow spin />
           <img
             src="/images/logo/wc2026-logo.svg"
             alt="FIFA World Cup 2026"
@@ -28,7 +25,6 @@ export function Footer() {
         </p>
       </div>
 
-      {/* Bottom glow line */}
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 h-px w-1/2"
         style={{ background: 'linear-gradient(to right, transparent, rgba(255,215,0,0.3), transparent)' }}
