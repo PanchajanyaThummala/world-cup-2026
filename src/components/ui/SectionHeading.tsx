@@ -19,15 +19,36 @@ export function SectionHeading({ eyebrow, title, subtitle, align = 'left' }: Sec
       style={{ minWidth: 0 }}
     >
       {eyebrow && (
-        <motion.p
-          variants={fadeInUp}
-          className="font-bold uppercase mb-5"
-          style={{ color: 'var(--color-primary)' }}
-          style={{ fontSize: 11, letterSpacing: '0.22em', fontFamily: "'Inter', sans-serif" }}
-        >
-          {eyebrow}
-        </motion.p>
+        <motion.div variants={fadeInUp} className="inline-block mb-5">
+          <p
+            style={{
+              color: 'var(--color-primary)',
+              fontSize: 11,
+              letterSpacing: '0.22em',
+              fontFamily: "'Inter', sans-serif",
+              fontWeight: 700,
+              textTransform: 'uppercase',
+              marginBottom: 6,
+            }}
+          >
+            {eyebrow}
+          </p>
+          {/* Animated underline */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2, ease: EASE_OUT_EXPO }}
+            style={{
+              height: 1,
+              background: 'linear-gradient(to right, var(--color-primary), transparent)',
+              transformOrigin: 'left center',
+              width: '100%',
+            }}
+          />
+        </motion.div>
       )}
+
       <div className="overflow-hidden">
         <motion.h2
           variants={{
@@ -37,23 +58,28 @@ export function SectionHeading({ eyebrow, title, subtitle, align = 'left' }: Sec
           style={{
             fontFamily: "'Bebas Neue', sans-serif",
             letterSpacing: '0.02em',
-            fontSize: 'clamp(40px, 6vw, 76px)',
+            fontSize: 'clamp(40px, 6vw, 80px)',
             lineHeight: 0.95,
             wordBreak: 'break-word',
             overflowWrap: 'break-word',
+            color: 'var(--color-text-primary)',
           }}
-          className="font-normal"
-          style={{ color: 'var(--color-text-primary)' }}
         >
           {title}
         </motion.h2>
       </div>
+
       {subtitle && (
         <motion.p
           variants={fadeInUp}
-          className="mt-6 max-w-2xl"
-          style={{ color: 'rgba(255,240,240,0.75)' }}
-          style={{ fontFamily: "'Inter', sans-serif", fontSize: 17, lineHeight: 1.6 }}
+          style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: 17,
+            lineHeight: 1.65,
+            color: 'rgba(255,240,240,0.7)',
+            maxWidth: '52ch',
+            marginTop: 20,
+          }}
         >
           {subtitle}
         </motion.p>

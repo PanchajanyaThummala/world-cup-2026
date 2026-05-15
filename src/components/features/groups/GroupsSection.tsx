@@ -7,7 +7,7 @@ import { staggerContainer } from '@/lib/motion'
 
 export function GroupsSection() {
   return (
-    <SectionWrapper id="groups" style={{ background: 'var(--color-bg-base)' }}>
+    <SectionWrapper id="groups" style={{ background: 'var(--color-bg-base)' }} glowPosition="top-right">
       <SectionHeading
         eyebrow="48 Teams · 12 Groups"
         title="The Group Stage"

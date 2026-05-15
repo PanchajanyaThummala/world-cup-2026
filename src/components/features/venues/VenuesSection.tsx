@@ -20,7 +20,7 @@ export function VenuesSection() {
   }))
 
   return (
-    <SectionWrapper id="venues" style={{ background: 'var(--color-bg-surface)' }}>
+    <SectionWrapper id="venues" style={{ background: 'var(--color-bg-surface)' }} glowPosition="top-left">
       <SectionHeading
         eyebrow="16 Stadiums · 3 Nations"
         title="The Host Venues"

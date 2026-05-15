@@ -6,7 +6,7 @@ import { TEAMS } from '@/data/teams'
 
 export function BracketSection() {
   return (
-    <SectionWrapper id="bracket" style={{ background: 'var(--color-bg-surface)' }}>
+    <SectionWrapper id="bracket" style={{ background: 'var(--color-bg-surface)' }} glowPosition="top-right">
       <SectionHeading
         eyebrow="Road to the Final"
         title="Knockout Bracket"

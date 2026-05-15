@@ -5,7 +5,7 @@ import { HISTORIC_MOMENTS } from '@/data/moments'
 
 export function NostalgiaSection() {
   return (
-    <SectionWrapper id="nostalgia" style={{ background: 'var(--color-bg-base)' }}>
+    <SectionWrapper id="nostalgia" style={{ background: 'var(--color-bg-base)' }} glowPosition="top-right">
       <SectionHeading
         eyebrow="Since 1930"
         title="Moments That Defined the Game"

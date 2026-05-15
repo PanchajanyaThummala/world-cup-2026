@@ -7,7 +7,7 @@ import { staggerContainer } from '@/lib/motion'
 
 export function FactsSection() {
   return (
-    <SectionWrapper id="facts" style={{ background: 'var(--color-bg-base)' }}>
+    <SectionWrapper id="facts" style={{ background: 'var(--color-bg-base)' }} glowPosition="top-left">
       <SectionHeading
         eyebrow="The Untold Story"
         title="Facts That Will Change How You See the World Cup"
