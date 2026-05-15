@@ -1,4 +1,3 @@
-import { CursorFollower } from '@/components/ui/CursorFollower'
 import { CountdownBanner } from '@/components/layout/CountdownBanner'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
@@ -15,7 +14,6 @@ import { BracketSection } from '@/components/features/bracket/BracketSection'
 export default function App() {
   return (
     <div style={{ background: 'var(--color-bg-base)', minHeight: '100vh', color: 'var(--color-text-primary)' }}>
-      <CursorFollower />
       <CountdownBanner />
       <Navbar />
       <main>
