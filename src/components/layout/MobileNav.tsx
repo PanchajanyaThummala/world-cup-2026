@@ -69,10 +69,13 @@ export function MobileNav({ sections, activeSection }: MobileNavProps) {
             >
               <div className="flex items-center justify-between mb-8">
                 <span
-                  style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: '0.08em', color: 'var(--color-text-primary)' }}
-                  className="text-lg"
+                  style={{ display: 'flex', alignItems: 'center', gap: 8 }}
                 >
-                  WC<span style={{ color: 'var(--color-primary)' }}>2026</span>
+                  <img
+                    src="/images/logo/wc2026-logo.svg"
+                    alt="FIFA World Cup 2026"
+                    style={{ height: 28, width: 'auto', filter: 'brightness(0) invert(1)', opacity: 0.9 }}
+                  />
                 </span>
                 <button
                   type="button"

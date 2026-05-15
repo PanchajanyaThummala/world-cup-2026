@@ -63,6 +63,27 @@ export function HeroSection() {
         }}
         className="relative z-10 text-center max-w-5xl mx-auto w-full"
       >
+        {/* Official logo */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.9, delay: 0.2, ease: EASE_OUT_EXPO }}
+          className="flex justify-center mb-6"
+        >
+          <img
+            src="/images/logo/wc2026-logo.svg"
+            alt="FIFA World Cup 2026 Official Logo"
+            width={120}
+            height={120}
+            loading="eager"
+            style={{
+              height: 'clamp(72px, 10vw, 120px)',
+              width: 'auto',
+              filter: 'drop-shadow(0 0 24px rgba(255,215,0,0.4))',
+            }}
+          />
+        </motion.div>
+
         {/* Eyebrow */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
@@ -175,13 +196,21 @@ export function HeroSection() {
         </motion.div>
       </motion.div>
 
-      {/* Soccer ball — right edge */}
+      {/* Trionda — large floating ball, right side */}
       <motion.div
-        className="absolute right-8 md:right-20 bottom-28 z-10"
-        animate={!shouldReduce ? { y: [0, -20, 0] } : {}}
-        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute right-4 md:right-12 lg:right-24 bottom-20 z-10 hidden sm:block"
+        initial={{ opacity: 0, x: 60, scale: 0.7 }}
+        animate={!shouldReduce
+          ? { opacity: 1, x: 0, scale: 1, y: [0, -22, 0] }
+          : { opacity: 1, x: 0, scale: 1 }}
+        transition={{
+          opacity: { duration: 1, delay: 1.4, ease: EASE_OUT_EXPO },
+          x: { duration: 1, delay: 1.4, ease: EASE_OUT_EXPO },
+          scale: { duration: 1, delay: 1.4, ease: EASE_OUT_EXPO },
+          y: { duration: 5.5, repeat: Infinity, ease: 'easeInOut', delay: 2.4 },
+        }}
       >
-        <SoccerBall size={110} glow spin />
+        <SoccerBall size={180} glow spin />
       </motion.div>
 
       {/* Scroll cue */}

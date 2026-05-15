@@ -77,16 +77,18 @@ export function Navbar() {
       >
         <button
           onClick={() => scrollTo('hero')}
-          className="flex items-center gap-2.5 group"
+          className="flex items-center gap-3 group"
           aria-label="Go to top"
+          style={{ minHeight: 44 }}
         >
-          <SoccerBall size={26} glow={false} spin />
-          <span
-            style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: '0.08em', color: 'var(--color-text-primary)' }}
-            className="text-xl transition-colors duration-150"
-          >
-            WC<span style={{ color: 'var(--color-primary)' }}>2026</span>
-          </span>
+          <SoccerBall size={28} glow={false} spin />
+          <img
+            src="/images/logo/wc2026-logo.svg"
+            alt="FIFA World Cup 2026"
+            width={48}
+            height={48}
+            style={{ height: 32, width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)', opacity: 0.92 }}
+          />
         </button>
 
         <ul className="hidden lg:flex items-center gap-1">

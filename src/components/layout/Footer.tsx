@@ -11,14 +11,13 @@ export function Footer() {
         style={{ paddingLeft: 'var(--gutter-x)', paddingRight: 'var(--gutter-x)' }}
       >
         <div className="flex items-center gap-4">
-          <SoccerBall size={40} glow spin />
+          <SoccerBall size={44} glow spin />
+          <img
+            src="/images/logo/wc2026-logo.svg"
+            alt="FIFA World Cup 2026"
+            style={{ height: 48, width: 'auto', filter: 'drop-shadow(0 0 8px rgba(255,215,0,0.3))' }}
+          />
           <div>
-            <p
-              style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: '0.06em', color: 'var(--color-text-primary)' }}
-              className="text-2xl"
-            >
-              FIFA World Cup <span style={{ color: 'var(--color-primary)' }}>2026</span>
-            </p>
             <p className="text-xs mt-0.5" style={{ color: 'var(--color-text-secondary)' }}>
               USA · Canada · Mexico · June 11 – July 19
             </p>
