@@ -22,7 +22,7 @@ export function KnockoutBracket({ slots, teams }: KnockoutBracketProps) {
           const roundSlots = slots.filter(s => s.round === key)
           return (
             <div key={key} className="flex flex-col gap-4">
-              <h4 className="text-gold-500 font-semibold text-xs uppercase tracking-widest text-center">
+              <h4 className="font-semibold text-xs uppercase tracking-widest text-center" style={{ color: 'var(--color-primary)' }}>
                 {label}
               </h4>
               <div className="flex flex-col gap-3 justify-around flex-1">

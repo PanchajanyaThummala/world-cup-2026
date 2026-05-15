@@ -14,7 +14,7 @@ import { BracketSection } from '@/components/features/bracket/BracketSection'
 
 export default function App() {
   return (
-    <div style={{ background: '#080A0F', minHeight: '100vh', color: '#E5E7EB' }}>
+    <div style={{ background: 'var(--color-bg-base)', minHeight: '100vh', color: 'var(--color-text-primary)' }}>
       <CursorFollower />
       <CountdownBanner />
       <Navbar />

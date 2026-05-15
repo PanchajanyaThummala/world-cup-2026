@@ -30,7 +30,7 @@ export function LegendCard({ legend, featured = false, index }: LegendCardProps)
       transition={{ delay: index * 0.08 }}
       className={`group relative overflow-hidden rounded-2xl ${featured ? 'min-h-[520px]' : 'min-h-[320px]'}`}
       style={{
-        border: '1px solid rgba(201, 168, 76, 0.12)',
+        border: '1px solid var(--color-border)',
         boxShadow: '0 4px 24px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04)',
       }}
     >
@@ -50,17 +50,18 @@ export function LegendCard({ legend, featured = false, index }: LegendCardProps)
           <div
             className="absolute inset-0"
             style={{
-              background: 'linear-gradient(to top, rgba(8,10,15,0.98) 0%, rgba(8,10,15,0.6) 50%, rgba(8,10,15,0.2) 100%)',
+              background: 'linear-gradient(to top, rgba(5,4,0,0.98) 0%, rgba(5,4,0,0.6) 50%, rgba(5,4,0,0.15) 100%)',
             }}
           />
         </>
       ) : (
         <div
           className="absolute inset-0 flex items-center justify-center"
-          style={{ background: 'linear-gradient(135deg, #1F2937 0%, #0D1117 60%, #161B26 100%)' }}
+          style={{ background: 'linear-gradient(135deg, #1A1400 0%, #0A0800 60%, #0F0C00 100%)' }}
         >
           <span
-            className="text-gold-900 select-none font-bold"
+            className="select-none font-bold"
+            style={{ color: 'rgba(255,215,0,0.12)' }}
             style={{
               fontFamily: "'Bebas Neue', sans-serif",
               fontSize: featured ? 140 : 90,
@@ -80,32 +81,32 @@ export function LegendCard({ legend, featured = false, index }: LegendCardProps)
       >
         <Badge label={legend.era} variant="gold" size="sm" />
         <motion.h3
-          whileHover={{ color: '#E2C267' }}
+          whileHover={{ color: '#FFD700' }}
           transition={{ duration: 0.2 }}
           style={{
             fontFamily: "'Bebas Neue', sans-serif",
             fontSize: featured ? 48 : 32,
             lineHeight: 1,
             letterSpacing: '0.02em',
-            color: '#F9FAFB',
+            color: 'var(--color-text-primary)',
           }}
           className="mt-2"
         >
           {legend.name}
         </motion.h3>
-        <div className="flex items-center gap-2 mt-1 text-neutral-400 text-sm">
+        <div className="flex items-center gap-2 mt-1 text-sm" style={{ color: 'rgba(255,240,240,0.6)' }}>
           <span aria-hidden="true">{legend.flag}</span>
           <span>{legend.nation}</span>
         </div>
         {featured && (
-          <p className="text-neutral-500 text-sm mt-3 leading-relaxed">{legend.description}</p>
+          <p className="text-sm mt-3 leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>{legend.description}</p>
         )}
       </div>
 
       {/* Gold border on hover */}
       <div
         className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-        style={{ border: '1px solid rgba(201,168,76,0.4)' }}
+        style={{ border: '1px solid var(--color-border-hover)' }}
       />
     </motion.div>
   )

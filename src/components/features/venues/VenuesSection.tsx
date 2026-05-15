@@ -20,7 +20,7 @@ export function VenuesSection() {
   }))
 
   return (
-    <SectionWrapper id="venues" className="bg-neutral-900/40">
+    <SectionWrapper id="venues" style={{ background: 'var(--color-bg-surface)' }}>
       <SectionHeading
         eyebrow="16 Stadiums · 3 Nations"
         title="The Host Venues"
@@ -31,8 +31,8 @@ export function VenuesSection() {
           <div key={country}>
             <div className="flex items-center gap-3 mb-6">
               <span role="img" aria-label={label} className="text-2xl">{flag}</span>
-              <h3 className="text-neutral-300 font-bold text-lg">{label}</h3>
-              <span className="text-neutral-700 text-sm">({venues.length} venues)</span>
+              <h3 className="font-bold text-lg" style={{ color: 'var(--color-text-primary)' }}>{label}</h3>
+              <span className="text-sm" style={{ color: 'var(--color-text-secondary)' }}>({venues.length} venues)</span>
             </div>
             <motion.div
               variants={staggerContainer}

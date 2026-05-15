@@ -24,7 +24,7 @@ export function ImpactStoryCard({ story, index }: ImpactStoryCardProps) {
         <div
           className="absolute left-0 top-6 bottom-6 w-0.5"
           style={{
-            background: 'linear-gradient(to bottom, transparent, rgba(201,168,76,0.6), transparent)',
+            background: 'linear-gradient(to bottom, transparent, rgba(255,215,0,0.5), transparent)',
             zIndex: 0,
           }}
         />
@@ -36,7 +36,8 @@ export function ImpactStoryCard({ story, index }: ImpactStoryCardProps) {
         <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
           <div className="min-w-0 flex-1">
             <p
-              className="text-neutral-500 text-xs mb-2 uppercase"
+              className="text-xs mb-2 uppercase"
+            style={{ color: 'var(--color-text-secondary)' }}
               style={{ letterSpacing: '0.12em' }}
             >
               {story.tournament}
@@ -47,13 +48,15 @@ export function ImpactStoryCard({ story, index }: ImpactStoryCardProps) {
         </div>
 
         <h3
-          className="text-neutral-50 font-bold text-xl mb-3 min-w-0"
+          className="font-bold text-xl mb-3 min-w-0"
+          style={{ color: 'var(--color-text-primary)' }}
           style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.3, overflowWrap: 'anywhere' }}
         >
           {story.title}
         </h3>
         <p
-          className="text-neutral-400 text-sm min-w-0"
+          className="text-sm min-w-0"
+          style={{ color: 'rgba(255,240,240,0.7)' }}
           style={{ lineHeight: 1.65, overflowWrap: 'anywhere' }}
         >
           {story.narrative}

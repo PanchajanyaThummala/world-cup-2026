@@ -18,7 +18,7 @@ export function StandingsTable({ standings, compact = false }: StandingsTablePro
         <col />
       </colgroup>
       <thead>
-        <tr className="text-neutral-600 border-b border-neutral-800/80" style={{ fontSize: 10 }}>
+        <tr className="border-b" style={{ fontSize: 10, color: 'var(--color-text-secondary)', borderColor: 'rgba(255,215,0,0.1)' }}>
           <th className="text-left pb-2 font-semibold uppercase tracking-wider">Team</th>
           <th className="text-center pb-2 font-semibold uppercase">MP</th>
           <th className="text-center pb-2 font-semibold uppercase">W</th>
@@ -34,14 +34,15 @@ export function StandingsTable({ standings, compact = false }: StandingsTablePro
           return (
             <tr
               key={s.team.code}
-              className={cn(
-                'border-b border-neutral-800/40 last:border-0',
-                isQualifier ? 'text-neutral-100' : 'text-neutral-300',
-              )}
-              style={isQualifier ? {
-                background: 'rgba(201,168,76,0.06)',
-                boxShadow: 'inset 2px 0 0 rgba(201,168,76,0.5)',
-              } : undefined}
+              className={cn('border-b last:border-0')}
+              style={{
+                borderColor: 'rgba(255,215,0,0.08)',
+                color: isQualifier ? 'var(--color-text-primary)' : 'rgba(255,240,240,0.6)',
+                ...(isQualifier ? {
+                  background: 'rgba(255,215,0,0.07)',
+                  boxShadow: 'inset 2px 0 0 rgba(255,215,0,0.5)',
+                } : {}),
+              }}
             >
               <td className="py-2.5 pr-1">
                 {/* Flag + label always on ONE line */}
@@ -53,7 +54,7 @@ export function StandingsTable({ standings, compact = false }: StandingsTablePro
                     /* Compact: 3-letter FIFA code — always fits on one line */
                     <span
                       title={s.team.name}
-                      className={cn(isQualifier ? 'font-bold text-neutral-50' : 'font-semibold')}
+                      className={cn(isQualifier ? 'font-bold' : 'font-semibold')}
                       style={{ fontFamily: "'Inter', sans-serif", fontSize: 11, letterSpacing: '0.05em', whiteSpace: 'nowrap' }}
                     >
                       {s.team.code}
@@ -62,7 +63,7 @@ export function StandingsTable({ standings, compact = false }: StandingsTablePro
                     /* Full: name truncated with ellipsis */
                     <span
                       title={s.team.name}
-                      className={cn(isQualifier ? 'font-semibold text-neutral-50' : 'font-medium')}
+                      className={cn(isQualifier ? 'font-semibold' : 'font-medium')}
                       style={{ fontFamily: "'Inter', sans-serif", fontSize: 12, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', minWidth: 0, flex: 1 }}
                     >
                       {s.team.name}
@@ -80,7 +81,8 @@ export function StandingsTable({ standings, compact = false }: StandingsTablePro
                 </td>
               )}
               <td
-                className={cn('text-center py-2.5 tabular-nums font-bold', isQualifier ? 'text-gold-400' : 'text-neutral-400')}
+                className={cn('text-center py-2.5 tabular-nums font-bold')}
+                style={{ color: isQualifier ? 'var(--color-primary)' : 'var(--color-text-secondary)' }}
                 style={{ fontSize: 12 }}
               >
                 {s.pts}

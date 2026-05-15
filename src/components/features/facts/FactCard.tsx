@@ -37,13 +37,15 @@ export function FactCard({ fact, index }: FactCardProps) {
           <Badge label={fact.category} variant={categoryVariant[fact.category] ?? 'neutral'} />
         </div>
         <p
-          className="text-neutral-50 font-bold text-lg mb-4 min-w-0"
+          className="font-bold text-lg mb-4 min-w-0"
+          style={{ color: 'var(--color-text-primary)' }}
           style={{ fontFamily: "'Inter', sans-serif", lineHeight: 1.4, overflowWrap: 'anywhere' }}
         >
           {fact.hook}
         </p>
         <p
-          className="text-neutral-400 text-sm min-w-0"
+          className="text-sm min-w-0"
+          style={{ color: 'rgba(255,240,240,0.7)' }}
           style={{ lineHeight: 1.65, overflowWrap: 'anywhere' }}
         >
           {fact.supporting}

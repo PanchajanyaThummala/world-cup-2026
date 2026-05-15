@@ -11,7 +11,10 @@ export function Timeline({ moments }: TimelineProps) {
   return (
     <div className="relative">
       {/* Center line — desktop only */}
-      <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-gold-500/20 to-transparent -translate-x-1/2" />
+      <div
+        className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2"
+        style={{ background: 'linear-gradient(to bottom, transparent, rgba(255,215,0,0.2), transparent)' }}
+      />
 
       <div className="flex flex-col gap-12">
         {sorted.map((moment, i) => (

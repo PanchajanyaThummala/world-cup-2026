@@ -37,12 +37,13 @@ export function GroupCard({ group }: GroupCardProps) {
               lineHeight: 1,
               letterSpacing: 0,
             }}
-            className="text-gold-400"
+            style={{ color: 'var(--color-primary)' }}
           >
             {group.label}
           </span>
           <span
-            className="text-neutral-500 uppercase"
+            className="uppercase"
+            style={{ color: 'var(--color-text-secondary)', fontSize: 11, letterSpacing: '0.12em', fontFamily: "'Inter', sans-serif" }}
             style={{ fontSize: 11, letterSpacing: '0.12em', fontFamily: "'Inter', sans-serif" }}
           >
             Group

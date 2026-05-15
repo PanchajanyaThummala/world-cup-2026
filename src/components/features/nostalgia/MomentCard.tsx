@@ -27,11 +27,11 @@ export function MomentCard({ moment, side, index }: MomentCardProps) {
       <div className="flex-shrink-0 md:w-28 flex flex-col items-start md:items-end gap-1 pt-1">
         <span
           style={{ fontFamily: "'Oswald', sans-serif", fontSize: 40, lineHeight: 1, fontWeight: 600 }}
-          className="text-gold-400"
+          style={{ color: 'var(--color-primary)' }}
         >
           {moment.year}
         </span>
-        <span className="text-neutral-600 text-xs uppercase tracking-wider">{moment.host}</span>
+        <span className="text-xs uppercase tracking-wider" style={{ color: 'var(--color-text-secondary)' }}>{moment.host}</span>
       </div>
 
       {/* Card — NO overflow:hidden so significance line is never clipped */}
@@ -40,8 +40,8 @@ export function MomentCard({ moment, side, index }: MomentCardProps) {
         transition={{ duration: 0.2 }}
         className="flex-1 rounded-xl"
         style={{
-          border: '1px solid rgba(31,41,55,0.8)',
-          background: 'rgba(13,17,23,0.95)',
+          border: '1px solid var(--color-border)',
+          background: 'var(--color-bg-surface)',
           minWidth: 0,
         }}
       >
@@ -62,7 +62,7 @@ export function MomentCard({ moment, side, index }: MomentCardProps) {
             />
             <div
               className="absolute inset-0"
-              style={{ background: 'linear-gradient(to bottom, transparent 30%, rgba(13,17,23,0.97) 100%)' }}
+              style={{ background: 'linear-gradient(to bottom, transparent 30%, rgba(10,8,0,0.97) 100%)' }}
             />
           </div>
         ) : (
@@ -70,7 +70,7 @@ export function MomentCard({ moment, side, index }: MomentCardProps) {
           <div
             style={{
               height: 4,
-              background: 'linear-gradient(90deg, rgba(201,168,76,0.4), rgba(201,168,76,0.1), transparent)',
+              background: 'linear-gradient(90deg, rgba(255,215,0,0.5), rgba(255,215,0,0.15), transparent)',
               borderTopLeftRadius: 11,
               borderTopRightRadius: 11,
             }}
@@ -85,27 +85,27 @@ export function MomentCard({ moment, side, index }: MomentCardProps) {
           </div>
 
           <h3
-            className="text-neutral-50 font-bold mb-4"
-            style={{ fontFamily: "'Inter', sans-serif", fontSize: 18, lineHeight: 1.35, overflowWrap: 'anywhere' }}
+            className="font-bold mb-4"
+            style={{ color: 'var(--color-text-primary)', fontFamily: "'Inter', sans-serif", fontSize: 18, lineHeight: 1.35, overflowWrap: 'anywhere' }}
           >
             {moment.title}
           </h3>
 
           <p
-            className="text-neutral-400"
-            style={{ fontSize: 14, lineHeight: 1.7, overflowWrap: 'anywhere' }}
+            style={{ fontSize: 14, lineHeight: 1.7, overflowWrap: 'anywhere', color: 'rgba(255,240,240,0.7)' }}
           >
             {moment.narrative}
           </p>
 
           {/* Significance — always visible, separated by top border */}
           <p
-            className="text-neutral-500 italic mt-5 pt-5"
+            className="italic mt-5 pt-5"
             style={{
               fontSize: 13,
               lineHeight: 1.65,
-              borderTop: '1px solid rgba(31,41,55,0.7)',
+              borderTop: '1px solid var(--color-border)',
               overflowWrap: 'anywhere',
+              color: 'var(--color-text-secondary)',
             }}
           >
             {moment.significance}

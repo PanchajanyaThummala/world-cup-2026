@@ -29,16 +29,10 @@ export function VenueCard({ venue, showCapacity = true }: VenueCardProps) {
 
         {/* Venue name + location */}
         <div className="min-w-0">
-          <h3
-            className="text-neutral-50"
-            style={{ fontFamily: "'Inter', sans-serif", fontSize: 16, fontWeight: 700, lineHeight: 1.35 }}
-          >
+          <h3 style={{ color: 'var(--color-text-primary)', fontFamily: "'Inter', sans-serif", fontSize: 16, fontWeight: 700, lineHeight: 1.35 }}>
             {venue.name}
           </h3>
-          <p
-            className="text-neutral-400 mt-1"
-            style={{ fontSize: 13, lineHeight: 1.5 }}
-          >
+          <p className="mt-1" style={{ color: 'var(--color-text-secondary)', fontSize: 13, lineHeight: 1.5 }}>
             {venue.city}{venue.state ? `, ${venue.state}` : ''}
           </p>
         </div>
@@ -47,17 +41,14 @@ export function VenueCard({ venue, showCapacity = true }: VenueCardProps) {
         {showCapacity && (
           <div
             className="mt-auto pt-5 flex items-baseline gap-2"
-            style={{ borderTop: '1px solid rgba(31,41,55,0.6)' }}
+            style={{ borderTop: '1px solid var(--color-border)' }}
           >
-            <span
-              className="text-gold-400"
-              style={{ fontFamily: "'Oswald', sans-serif", fontSize: 22, fontWeight: 600, lineHeight: 1 }}
-            >
+            <span style={{ fontFamily: "'Oswald', sans-serif", fontSize: 22, fontWeight: 600, lineHeight: 1, color: 'var(--color-primary)' }}>
               {formatCapacity(venue.capacity)}
             </span>
             <span
-              className="text-neutral-600 uppercase"
-              style={{ fontSize: 10, letterSpacing: '0.14em', fontFamily: "'Inter', sans-serif", fontWeight: 600 }}
+              className="uppercase"
+              style={{ fontSize: 10, letterSpacing: '0.14em', fontFamily: "'Inter', sans-serif", fontWeight: 600, color: 'var(--color-text-secondary)' }}
             >
               capacity
             </span>

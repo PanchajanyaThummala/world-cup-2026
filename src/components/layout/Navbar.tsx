@@ -59,15 +59,15 @@ export function Navbar() {
       transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
         'fixed left-0 right-0 z-50 transition-all duration-300',
-        scrolled
-          ? 'border-b border-neutral-800/60'
-          : 'bg-transparent',
+        scrolled ? 'border-b' : 'bg-transparent',
       )}
       style={{
         top: 'var(--banner-h)',
         ...(scrolled ? {
-          background: 'rgba(8,10,15,0.85)',
+          background: 'rgba(5,4,0,0.92)',
           backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
+          borderColor: 'var(--color-border)',
         } : {}),
       }}
     >
@@ -82,10 +82,10 @@ export function Navbar() {
         >
           <SoccerBall size={26} glow={false} spin />
           <span
-            style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: '0.08em' }}
-            className="text-neutral-100 text-xl group-hover:text-gold-400 transition-colors"
+            style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: '0.08em', color: 'var(--color-text-primary)' }}
+            className="text-xl transition-colors duration-150"
           >
-            WC<span className="text-gold-400">2026</span>
+            WC<span style={{ color: 'var(--color-primary)' }}>2026</span>
           </span>
         </button>
 
@@ -97,15 +97,19 @@ export function Navbar() {
                 aria-label={`Navigate to ${label}`}
                 className={cn(
                   'relative px-4 py-2 text-sm font-medium transition-colors duration-200',
-                  activeSection === id ? 'text-gold-400' : 'text-neutral-500 hover:text-neutral-200',
                 )}
+                style={{
+                  color: activeSection === id ? 'var(--color-primary)' : 'var(--color-text-secondary)',
+                  minHeight: 44,
+                  minWidth: 44,
+                }}
                 style={{ fontFamily: "'Inter', sans-serif" }}
               >
                 {activeSection === id && (
                   <motion.span
                     layoutId="nav-pill"
                     className="absolute inset-0 rounded-md"
-                    style={{ background: 'rgba(201,168,76,0.08)', border: '1px solid rgba(201,168,76,0.2)' }}
+                    style={{ background: 'rgba(255,215,0,0.08)', border: '1px solid rgba(255,215,0,0.25)' }}
                     transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                   />
                 )}

@@ -22,26 +22,26 @@ export function BracketSlot({ slot, teams }: BracketSlotProps) {
       <div
         className="w-44 rounded-lg flex items-center justify-center gap-2 text-xs px-3 py-4"
         style={{
-          border: '1.5px dashed rgba(31,41,55,0.9)',
-          background: 'rgba(8,10,15,0.4)',
+          border: '1.5px dashed rgba(255,215,0,0.15)',
+          background: 'rgba(5,4,0,0.5)',
           opacity: 0.55,
           minHeight: 72,
         }}
       >
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5" className="text-neutral-600" />
-          <path d="M12 7v5l3 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className="text-neutral-600" />
+          <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.5" style={{ color: 'var(--color-text-secondary)' }} />
+          <path d="M12 7v5l3 2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" style={{ color: 'var(--color-text-secondary)' }} />
         </svg>
-        <span className="text-neutral-500 italic" style={{ fontSize: 11 }}>Awaiting</span>
+        <span className="italic" style={{ fontSize: 11, color: 'var(--color-text-secondary)' }}>Awaiting</span>
       </div>
     )
   }
 
   const renderTeam = (team: Team | null, score: number | undefined, isWinner: boolean) => (
-    <div className={cn(
-      'flex items-center gap-2 px-3 py-2 text-xs',
-      isWinner ? 'text-gold-400 font-bold' : 'text-neutral-300',
-    )}>
+    <div
+      className={cn('flex items-center gap-2 px-3 py-2 text-xs', isWinner ? 'font-bold' : '')}
+      style={{ color: isWinner ? 'var(--color-primary)' : 'var(--color-text-primary)' }}
+    >
       {team ? (
         <>
           <span aria-hidden="true" className="text-sm leading-none">{team.flag}</span>
@@ -49,7 +49,7 @@ export function BracketSlot({ slot, teams }: BracketSlotProps) {
           {score !== undefined && <span className="ml-auto font-bold tabular-nums">{score}</span>}
         </>
       ) : (
-        <span className="text-neutral-600 italic">TBD</span>
+        <span className="italic" style={{ color: 'var(--color-text-secondary)' }}>TBD</span>
       )}
     </div>
   )
@@ -61,13 +61,13 @@ export function BracketSlot({ slot, teams }: BracketSlotProps) {
     <div
       className="w-44 rounded-lg overflow-hidden text-xs"
       style={{
-        background: 'rgba(13,17,23,0.7)',
-        border: '1px solid rgba(31,41,55,0.9)',
+        background: 'var(--color-bg-surface)',
+        border: '1px solid var(--color-border)',
         backdropFilter: 'blur(8px)',
       }}
     >
       {renderTeam(teamA, slot.scoreA, aWins)}
-      <div className="h-px bg-neutral-800/60" />
+      <div className="h-px" style={{ background: 'var(--color-border)' }} />
       {renderTeam(teamB, slot.scoreB, bWins)}
     </div>
   )

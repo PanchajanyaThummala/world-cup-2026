@@ -41,7 +41,7 @@ function Stat({ value, label, index }: { value: number; label: string; index: nu
       {index < STATS.length - 1 && (
         <div
           className="hidden md:block absolute right-0 top-1/4 bottom-1/4 w-px"
-          style={{ background: 'linear-gradient(to bottom, transparent, rgba(201,168,76,0.25), transparent)' }}
+          style={{ background: 'linear-gradient(to bottom, transparent, rgba(255,215,0,0.2), transparent)' }}
           aria-hidden="true"
         />
       )}
@@ -49,13 +49,14 @@ function Stat({ value, label, index }: { value: number; label: string; index: nu
       <motion.p
         animate={completed && !shouldReduce ? { scale: [1, 1.05, 1] } : {}}
         transition={{ duration: 0.25, ease: 'easeOut' }}
-        className="text-gold-400 tabular-nums leading-none"
-        style={{ fontFamily: "'Oswald', sans-serif", fontWeight: 600, fontSize: 'clamp(40px, 5vw, 56px)' }}
+        className="tabular-nums leading-none"
+        style={{ fontFamily: "'Oswald', sans-serif", fontWeight: 600, fontSize: 'clamp(40px, 5vw, 56px)', color: 'var(--color-primary)' }}
       >
         {count}
       </motion.p>
       <p
-        className="text-neutral-500 uppercase mt-3"
+        className="uppercase mt-3"
+      style={{ color: 'var(--color-text-secondary)' }}
         style={{ fontSize: 11, letterSpacing: '0.18em', fontFamily: "'Inter', sans-serif" }}
       >
         {label}
@@ -69,15 +70,15 @@ export function TournamentStats() {
     <div
       className="w-full relative"
       style={{
-        background: 'linear-gradient(180deg, #0D1117 0%, #080A0F 100%)',
-        borderTop: '1px solid rgba(201,168,76,0.08)',
-        borderBottom: '1px solid rgba(201,168,76,0.08)',
+        background: 'var(--color-bg-surface)',
+        borderTop: '1px solid var(--color-border)',
+        borderBottom: '1px solid var(--color-border)',
       }}
     >
       {/* Subtle horizontal gold accent line */}
       <div
         className="absolute top-1/2 left-0 right-0 h-px pointer-events-none"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(201,168,76,0.06), transparent)' }}
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(255,215,0,0.06), transparent)' }}
         aria-hidden="true"
       />
       <div

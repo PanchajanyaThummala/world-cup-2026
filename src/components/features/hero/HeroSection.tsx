@@ -18,7 +18,7 @@ export function HeroSection() {
       ref={containerRef}
       id="hero"
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden"
-      style={{ background: '#080A0F' }}
+      style={{ background: 'var(--color-bg-base)' }}
     >
       {/* Background photo parallax */}
       <motion.div
@@ -39,7 +39,7 @@ export function HeroSection() {
         <div
           className="absolute inset-0"
           style={{
-            background: 'linear-gradient(to bottom, rgba(8,10,15,0.3) 0%, rgba(8,10,15,0.2) 30%, rgba(8,10,15,0.7) 75%, #080A0F 100%)',
+            background: 'linear-gradient(to bottom, rgba(5,4,0,0.3) 0%, rgba(5,4,0,0.2) 30%, rgba(5,4,0,0.75) 75%, #050400 100%)',
           }}
         />
       </motion.div>
@@ -48,7 +48,7 @@ export function HeroSection() {
       <div
         className="absolute top-0 right-0 w-1/3 h-2/3 pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse at top right, rgba(201,168,76,0.07) 0%, transparent 60%)',
+          background: 'radial-gradient(ellipse at top right, rgba(255,215,0,0.06) 0%, transparent 60%)',
           zIndex: 3,
         }}
       />
@@ -68,8 +68,8 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3, ease: EASE_OUT_EXPO }}
-          className="text-gold-400 font-bold uppercase mb-8 tracking-widest"
-          style={{ fontSize: 11, letterSpacing: '0.22em', fontFamily: "'Inter', sans-serif" }}
+          className="font-bold uppercase mb-8 tracking-widest"
+          style={{ color: 'var(--color-primary)', fontSize: 11, letterSpacing: '0.22em', fontFamily: "'Inter', sans-serif" }}
         >
           The Greatest Tournament on Earth
         </motion.p>
@@ -84,7 +84,7 @@ export function HeroSection() {
             fontSize: 'clamp(56px, 10vw, 128px)',
             lineHeight: 0.9,
             letterSpacing: '0.06em',
-            color: '#F9FAFB',
+            color: 'var(--color-text-primary)',
             wordBreak: 'keep-all',
           }}
         >
@@ -102,7 +102,7 @@ export function HeroSection() {
             lineHeight: 0.9,
             letterSpacing: '0.04em',
             wordBreak: 'keep-all',
-            background: 'linear-gradient(135deg, #F0D98B 0%, #C9A84C 50%, #A8842A 100%)',
+            background: 'linear-gradient(135deg, #FFFFF0 0%, #FFD700 45%, #B8960C 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
@@ -121,7 +121,7 @@ export function HeroSection() {
             fontSize: 'clamp(64px, 12vw, 160px)',
             lineHeight: 0.85,
             letterSpacing: '0.06em',
-            WebkitTextStroke: '2px rgba(201,168,76,0.5)',
+            WebkitTextStroke: '2px rgba(255,215,0,0.6)',
             color: 'transparent',
           }}
         >
@@ -133,8 +133,8 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 1.0, ease: EASE_OUT_EXPO }}
-          className="text-neutral-300 text-base md:text-lg mt-8 font-light"
-          style={{ fontFamily: "'Inter', sans-serif", letterSpacing: '0.04em' }}
+          className="text-base md:text-lg mt-8 font-light"
+          style={{ color: 'var(--color-text-primary)', opacity: 0.8, fontFamily: "'Inter', sans-serif", letterSpacing: '0.04em' }}
         >
           June 11 – July 19, 2026&nbsp;&nbsp;·&nbsp;&nbsp;🇺🇸 USA&nbsp;&nbsp;·&nbsp;&nbsp;🇨🇦 Canada&nbsp;&nbsp;·&nbsp;&nbsp;🇲🇽 Mexico
         </motion.p>
@@ -152,19 +152,21 @@ export function HeroSection() {
             whileTap={{ scale: 0.97 }}
             animate={shouldReduce ? {} : {
               boxShadow: [
-                '0 0 24px rgba(201,168,76,0.25)',
-                '0 0 40px rgba(201,168,76,0.5)',
-                '0 0 24px rgba(201,168,76,0.25)',
+                '0 0 24px rgba(255,215,0,0.3)',
+                '0 0 48px rgba(255,215,0,0.6)',
+                '0 0 24px rgba(255,215,0,0.3)',
               ],
             }}
             transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
-            className="font-bold text-neutral-950"
+            className="font-bold"
             style={{
               fontFamily: "'Inter', sans-serif",
               fontSize: 14,
               letterSpacing: '0.06em',
               padding: '14px 40px',
-              background: 'linear-gradient(135deg, #F0D98B 0%, #C9A84C 60%, #A8842A 100%)',
+              minHeight: 44,
+              background: '#FFD700',
+              color: '#050400',
               borderRadius: 8,
             }}
           >
@@ -189,11 +191,12 @@ export function HeroSection() {
         transition={{ delay: 1.8 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
       >
-        <span className="text-neutral-600 text-xs uppercase" style={{ letterSpacing: '0.2em' }}>Scroll</span>
+        <span className="text-xs uppercase" style={{ color: 'var(--color-text-secondary)', letterSpacing: '0.2em' }}>Scroll</span>
         <motion.div
           animate={!shouldReduce ? { y: [0, 8, 0], opacity: [0.4, 1, 0.4] } : {}}
           transition={{ duration: 1.6, repeat: Infinity }}
-          className="w-px h-8 bg-gradient-to-b from-gold-500 to-transparent"
+          className="w-px h-8"
+          style={{ background: 'linear-gradient(to bottom, var(--color-primary), transparent)' }}
         />
       </motion.div>
     </section>

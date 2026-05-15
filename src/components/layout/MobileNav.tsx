@@ -24,7 +24,8 @@ export function MobileNav({ sections, activeSection }: MobileNavProps) {
         onClick={() => setOpen(true)}
         aria-label="Open menu"
         aria-expanded={open}
-        className="lg:hidden flex items-center justify-center text-neutral-200"
+        className="lg:hidden flex items-center justify-center"
+        style={{ color: 'var(--color-text-primary)' }}
         style={{ minHeight: 44, minWidth: 44 }}
       >
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -45,7 +46,7 @@ export function MobileNav({ sections, activeSection }: MobileNavProps) {
               onClick={() => setOpen(false)}
               aria-label="Close menu"
               className="fixed inset-0 z-[70] cursor-default"
-              style={{ background: 'rgba(8,10,15,0.6)', backdropFilter: 'blur(4px)' }}
+              style={{ background: 'rgba(5,4,0,0.7)', backdropFilter: 'blur(4px)' }}
             />
             {/* Panel */}
             <motion.div
@@ -57,9 +58,10 @@ export function MobileNav({ sections, activeSection }: MobileNavProps) {
               aria-label="Site navigation"
               className="fixed top-0 right-0 bottom-0 z-[80] w-72 max-w-[85vw] flex flex-col"
               style={{
-                background: 'rgba(13,17,23,0.96)',
+                background: 'rgba(10,8,0,0.97)',
                 backdropFilter: 'blur(16px)',
-                borderLeft: '1px solid rgba(201,168,76,0.18)',
+                WebkitBackdropFilter: 'blur(16px)',
+                borderLeft: '1px solid var(--color-border)',
                 paddingLeft: 'var(--gutter-x)',
                 paddingRight: 'var(--gutter-x)',
                 paddingTop: 24,
@@ -67,16 +69,17 @@ export function MobileNav({ sections, activeSection }: MobileNavProps) {
             >
               <div className="flex items-center justify-between mb-8">
                 <span
-                  style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: '0.08em' }}
-                  className="text-neutral-100 text-lg"
+                  style={{ fontFamily: "'Bebas Neue', sans-serif", letterSpacing: '0.08em', color: 'var(--color-text-primary)' }}
+                  className="text-lg"
                 >
-                  WC<span className="text-gold-400">2026</span>
+                  WC<span style={{ color: 'var(--color-primary)' }}>2026</span>
                 </span>
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
                   aria-label="Close menu"
-                  className="flex items-center justify-center text-neutral-400"
+                  className="flex items-center justify-center"
+                  style={{ color: 'var(--color-text-secondary)' }}
                   style={{ minHeight: 44, minWidth: 44 }}
                 >
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -92,16 +95,16 @@ export function MobileNav({ sections, activeSection }: MobileNavProps) {
                       type="button"
                       onClick={() => navigate(id)}
                       className={cn(
-                        'w-full text-left px-3 py-3 rounded-md transition-colors',
-                        activeSection === id
-                          ? 'text-gold-400 bg-gold-500/10 border border-gold-500/20'
-                          : 'text-neutral-300 hover:text-neutral-50 hover:bg-neutral-800/50',
+                        'w-full text-left px-3 py-3 rounded-md transition-colors duration-150',
                       )}
                       style={{
                         fontFamily: "'Inter', sans-serif",
                         fontSize: 15,
                         fontWeight: 500,
                         minHeight: 44,
+                        color: activeSection === id ? 'var(--color-primary)' : 'var(--color-text-primary)',
+                        background: activeSection === id ? 'rgba(255,215,0,0.08)' : 'transparent',
+                        border: activeSection === id ? '1px solid rgba(255,215,0,0.2)' : '1px solid transparent',
                       }}
                     >
                       {label}

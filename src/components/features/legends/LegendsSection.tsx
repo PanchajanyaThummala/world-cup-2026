@@ -9,7 +9,7 @@ export function LegendsSection() {
   const [featured, ...rest] = LEGENDS
 
   return (
-    <SectionWrapper id="legends" style={{ background: '#0D1117' } as React.CSSProperties}>
+    <SectionWrapper id="legends" style={{ background: 'var(--color-bg-base)' } as React.CSSProperties}>
       <SectionHeading
         eyebrow="The Greats"
         title="Legends of the Game"

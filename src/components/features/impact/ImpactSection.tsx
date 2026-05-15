@@ -7,7 +7,7 @@ import { staggerContainer } from '@/lib/motion'
 
 export function ImpactSection() {
   return (
-    <SectionWrapper id="impact" className="bg-neutral-950">
+    <SectionWrapper id="impact" style={{ background: 'var(--color-bg-surface)' }}>
       <SectionHeading
         eyebrow="Beyond the Pitch"
         title="How the World Cup Changed the World"

@@ -21,7 +21,7 @@ export function SoccerBall({ size = 80, className = '', glow = true, spin = true
         <div
           className="absolute inset-0 rounded-full"
           style={{
-            background: 'radial-gradient(circle at 50% 50%, rgba(201,168,76,0.25) 0%, transparent 70%)',
+            background: 'radial-gradient(circle at 50% 50%, rgba(255,215,0,0.25) 0%, transparent 70%)',
             transform: 'scale(1.8)',
             filter: 'blur(12px)',
           }}
@@ -31,12 +31,12 @@ export function SoccerBall({ size = 80, className = '', glow = true, spin = true
         viewBox="0 0 100 100"
         width={size}
         height={size}
-        style={{ position: 'relative', zIndex: 1, filter: glow ? 'drop-shadow(0 0 8px rgba(201,168,76,0.4))' : 'none' }}
+        style={{ position: 'relative', zIndex: 1, filter: glow ? 'drop-shadow(0 0 8px rgba(255,215,0,0.4))' : 'none' }}
       >
         <defs>
           <radialGradient id="ballGrad" cx="38%" cy="35%" r="55%">
-            <stop offset="0%" stopColor="#F0D98B" />
-            <stop offset="40%" stopColor="#C9A84C" />
+            <stop offset="0%" stopColor="#FFFFF0" />
+            <stop offset="40%" stopColor="#FFD700" />
             <stop offset="100%" stopColor="#4a3800" />
           </radialGradient>
           <radialGradient id="darkPanel" cx="50%" cy="50%" r="50%">
@@ -79,7 +79,7 @@ export function SoccerBall({ size = 80, className = '', glow = true, spin = true
         <ellipse cx="38" cy="34" rx="10" ry="7" fill="rgba(255,255,255,0.15)" style={{ filter: 'blur(2px)' }} />
 
         {/* Rim */}
-        <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(201,168,76,0.4)" strokeWidth="1" />
+        <circle cx="50" cy="50" r="48" fill="none" stroke="rgba(255,215,0,0.4)" strokeWidth="1" />
       </svg>
     </motion.div>
   )

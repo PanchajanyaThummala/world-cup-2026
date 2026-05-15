@@ -51,8 +51,8 @@ export function CursorFollower() {
           width: 8,
           height: 8,
           borderRadius: '50%',
-          background: '#C9A84C',
-          boxShadow: '0 0 12px rgba(201,168,76,0.8)',
+          background: '#FFD700',
+          boxShadow: '0 0 12px rgba(255,215,0,0.8)',
         }}
       />
       {/* Trail ring */}
@@ -70,7 +70,7 @@ export function CursorFollower() {
           width: 32,
           height: 32,
           borderRadius: '50%',
-          border: '1px solid rgba(201,168,76,0.4)',
+          border: '1px solid rgba(255,215,0,0.4)',
         }}
       />
     </>

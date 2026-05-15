@@ -21,7 +21,8 @@ export function SectionHeading({ eyebrow, title, subtitle, align = 'left' }: Sec
       {eyebrow && (
         <motion.p
           variants={fadeInUp}
-          className="text-gold-400 font-bold uppercase mb-5"
+          className="font-bold uppercase mb-5"
+          style={{ color: 'var(--color-primary)' }}
           style={{ fontSize: 11, letterSpacing: '0.22em', fontFamily: "'Inter', sans-serif" }}
         >
           {eyebrow}
@@ -41,7 +42,8 @@ export function SectionHeading({ eyebrow, title, subtitle, align = 'left' }: Sec
             wordBreak: 'break-word',
             overflowWrap: 'break-word',
           }}
-          className="font-normal text-neutral-50"
+          className="font-normal"
+          style={{ color: 'var(--color-text-primary)' }}
         >
           {title}
         </motion.h2>
@@ -49,7 +51,8 @@ export function SectionHeading({ eyebrow, title, subtitle, align = 'left' }: Sec
       {subtitle && (
         <motion.p
           variants={fadeInUp}
-          className="mt-6 text-neutral-300 max-w-2xl"
+          className="mt-6 max-w-2xl"
+          style={{ color: 'rgba(255,240,240,0.75)' }}
           style={{ fontFamily: "'Inter', sans-serif", fontSize: 17, lineHeight: 1.6 }}
         >
           {subtitle}
