@@ -70,6 +70,7 @@ export function HeroSection() {
           paddingRight: 'var(--gutter-x)',
         }}
         className="relative z-10 text-center max-w-5xl mx-auto w-full"
+        style={{ paddingTop: 'calc(var(--banner-h) + 64px)' }}
       >
         {/* Official logo */}
         <motion.div

@@ -13,4 +13,12 @@ describe('MomentCard', () => {
     expect(screen.getByText(moment.narrative)).toBeInTheDocument()
     expect(screen.getByText(moment.era)).toBeInTheDocument()
   })
+
+  it('renders photo img when moment.photo is set', () => {
+    const moment = { ...HISTORIC_MOMENTS[0], photo: 'images/moments/2022-argentina-france.avif' }
+    render(<MomentCard moment={moment} side="left" index={0} />)
+    const img = screen.getByAltText(moment.title)
+    expect(img).toBeInTheDocument()
+    expect(img).toHaveAttribute('src', expect.stringContaining('2022-argentina-france.avif'))
+  })
 })

@@ -67,6 +67,7 @@ export interface HistoricMoment {
   era: Era
   category: MomentCategory
   photo?: string
+  sourceUrl?: string
 }
 
 export interface Legend {
