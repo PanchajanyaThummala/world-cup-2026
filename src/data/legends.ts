@@ -8,7 +8,7 @@ export const LEGENDS: Legend[] = [
     flag: '🇧🇷',
     era: '1958–1970 Dynasty',
     description: 'The only player to win three World Cups, Pelé redefined what a footballer could be — pure genius, joy, and power.',
-    photo: 'images/players/player-1.jpg',
+    photo: 'images/legends/pele.jpg',
   },
   {
     id: 'maradona',
@@ -17,7 +17,7 @@ export const LEGENDS: Legend[] = [
     flag: '🇦🇷',
     era: 'Hand of God Era',
     description: 'In 1986 he scored the goal of the century and the most controversial goal ever — four minutes apart. A one-man World Cup.',
-    photo: 'images/players/player-2.jpg',
+    photo: 'images/legends/maradona.webp',
   },
   {
     id: 'zidane',
@@ -26,6 +26,7 @@ export const LEGENDS: Legend[] = [
     flag: '🇫🇷',
     era: 'Golden Generation',
     description: 'Two final goals in 1998. A headbutt that ended his career in 2006. No player has ever commanded the world stage so completely.',
+    photo: 'images/legends/zidane.jpg',
   },
   {
     id: 'ronaldo-r9',
@@ -34,7 +35,7 @@ export const LEGENDS: Legend[] = [
     flag: '🇧🇷',
     era: 'The Phenomenon Era',
     description: 'Struck down by a seizure the night before the 1998 final, came back in 2002 to score twice and claim his crown. The greatest striker.',
-    photo: 'images/players/trophy.jpg',
+    photo: 'images/legends/ronaldo-r9.avif',
   },
   {
     id: 'klose',
@@ -43,6 +44,7 @@ export const LEGENDS: Legend[] = [
     flag: '🇩🇪',
     era: 'Record Breaker Era',
     description: 'The all-time World Cup top scorer with 16 goals across four tournaments — a record that may stand forever.',
+    photo: 'images/legends/klose.webp',
   },
   {
     id: 'yashin',
@@ -51,5 +53,15 @@ export const LEGENDS: Legend[] = [
     flag: '🇷🇺',
     era: 'The Black Spider Era',
     description: 'The only goalkeeper ever to win the Ballon d\'Or, Yashin saved an estimated 150 penalties in his career. The blueprint for modern goalkeeping.',
+    photo: 'images/legends/yashin.jpg',
+  },
+  {
+    id: 'messi',
+    name: 'Lionel Messi',
+    nation: 'Argentina',
+    flag: '🇦🇷',
+    era: 'GOAT Era',
+    description: 'Five World Cups. Finally crowned in Qatar 2022 with a hat-trick in the final, a golden boot, and a golden ball. The debate is settled.',
+    photo: 'images/legends/messi.webp',
   },
 ]

@@ -67,6 +67,11 @@ export interface HistoricMoment {
   era: Era
   category: MomentCategory
   photo?: string
+  objectPosition?: string
+  imageBrightness?: number
+  contentAlign?: 'top' | 'bottom'
+  disableKenBurns?: boolean
+  kenBurnsOut?: boolean
   sourceUrl?: string
 }
 

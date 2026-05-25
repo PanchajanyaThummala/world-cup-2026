@@ -1,3 +1,4 @@
+import React from 'react'
 import { motion } from 'framer-motion'
 import { SectionWrapper } from '@/components/layout/SectionWrapper'
 import { SectionHeading } from '@/components/ui/SectionHeading'
@@ -14,7 +15,7 @@ export function LegendsSection() {
         eyebrow="The Greats"
         sectionNum="05"
         title="Legends of the Game"
-        subtitle="They didn't just play the World Cup — they defined it. Six players who left the game permanently changed."
+        subtitle="They didn't just play the World Cup — they defined it. Seven players who left the game permanently changed."
       />
 
       <motion.div
@@ -22,31 +23,20 @@ export function LegendsSection() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false }}
-        className="grid gap-8"
-        style={{
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gridTemplateRows: 'auto',
-        }}
+        className="flex flex-col md:flex-row gap-6"
       >
-        {/* Featured card — spans 1 col on mobile, 1 col left on desktop */}
-        <div className="col-span-3 md:col-span-1 md:row-span-2">
+        {/* Pelé — tall hero left column */}
+        <div className="md:w-5/12 flex-shrink-0 flex flex-col">
           <LegendCard legend={featured} featured index={0} />
         </div>
 
-        {/* Remaining 4 cards — 2×2 grid beside featured on desktop */}
-        {rest.slice(0, 4).map((legend, i) => (
-          <div key={legend.id} className="col-span-3 md:col-span-1">
-            <LegendCard legend={legend} index={i + 1} />
-          </div>
-        ))}
-      </motion.div>
-
-      {/* Sixth legend — full width strip */}
-      {rest[4] && (
-        <div className="mt-8">
-          <LegendCard legend={rest[4]} index={5} />
+        {/* Remaining 6 — uniform 2×3 equal grid */}
+        <div className="flex-1 grid grid-cols-2 gap-6">
+          {rest.map((legend, i) => (
+            <LegendCard key={legend.id} legend={legend} index={i + 1} />
+          ))}
         </div>
-      )}
+      </motion.div>
     </SectionWrapper>
   )
 }

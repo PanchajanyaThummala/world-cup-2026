@@ -52,11 +52,11 @@ export function MomentCard({ moment, side, index }: MomentCardProps) {
         cursor: moment.sourceUrl ? 'pointer' : 'default',
       }}
     >
-      {/* Ken Burns image */}
+      {/* Ken Burns — zoom in by default, zoom out with kenBurnsOut, static with disableKenBurns */}
       <motion.div
         className="absolute inset-0"
-        initial={{ scale: 1 }}
-        whileInView={{ scale: 1.08 }}
+        initial={{ scale: moment.kenBurnsOut ? 1.08 : 1 }}
+        whileInView={moment.disableKenBurns ? { scale: 1 } : { scale: moment.kenBurnsOut ? 1 : 1.08 }}
         viewport={{ once: false }}
         transition={{ duration: 8, ease: 'easeOut' }}
         style={{ willChange: 'transform' }}
@@ -67,24 +67,38 @@ export function MomentCard({ moment, side, index }: MomentCardProps) {
           width={800}
           height={500}
           loading="lazy"
-          className="w-full h-full object-cover object-top"
-          style={{ filter: 'brightness(0.85) saturate(0.9)' }}
+          className="w-full h-full object-cover"
+          style={{
+            objectPosition: moment.objectPosition ?? 'center',
+            filter: `brightness(${moment.imageBrightness ?? 0.85}) saturate(0.9)`,
+          }}
         />
       </motion.div>
 
-      {/* Multi-layer gradient: light at top, heavy at bottom for text */}
+      {/* Gradient — bottom-heavy by default, flips to top-heavy when contentAlign='top' */}
       <div
         className="absolute inset-0"
         style={{
-          background: [
-            'linear-gradient(to bottom, rgba(5,4,0,0.1) 0%, rgba(5,4,0,0.05) 20%, rgba(5,4,0,0.65) 52%, rgba(5,4,0,0.98) 100%)',
-            'radial-gradient(ellipse at 50% 100%, rgba(255,215,0,0.04) 0%, transparent 70%)',
-          ].join(', '),
+          background: moment.contentAlign === 'top'
+            ? [
+                'linear-gradient(to top, rgba(5,4,0,0.05) 0%, rgba(5,4,0,0.1) 20%, rgba(5,4,0,0.65) 52%, rgba(5,4,0,0.98) 100%)',
+                'radial-gradient(ellipse at 50% 0%, rgba(255,215,0,0.04) 0%, transparent 70%)',
+              ].join(', ')
+            : [
+                'linear-gradient(to bottom, rgba(5,4,0,0.1) 0%, rgba(5,4,0,0.05) 20%, rgba(5,4,0,0.65) 52%, rgba(5,4,0,0.98) 100%)',
+                'radial-gradient(ellipse at 50% 100%, rgba(255,215,0,0.04) 0%, transparent 70%)',
+              ].join(', '),
         }}
       />
 
-      {/* Content pinned to bottom */}
-      <div className="absolute bottom-0 left-0 right-0" style={{ padding: 'var(--card-padding, 32px)' }}>
+      {/* Content — bottom by default, top when contentAlign='top' */}
+      <div
+        className="absolute left-0 right-0"
+        style={{
+          padding: 'var(--card-padding, 32px)',
+          ...(moment.contentAlign === 'top' ? { top: 0 } : { bottom: 0 }),
+        }}
+      >
         <div className="flex flex-wrap items-center gap-2 mb-3">
           <Badge label={moment.era} variant="gold" />
           <Badge label={moment.category} variant="neutral" />
