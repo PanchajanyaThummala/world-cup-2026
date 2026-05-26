@@ -3,18 +3,22 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 interface MobileNavProps {
-  sections: Array<{ id: string; label: string }>
+  sections: Array<{ id: string; label: string; href?: string }>
   activeSection: string
 }
 
 export function MobileNav({ sections, activeSection }: MobileNavProps) {
   const [open, setOpen] = useState(false)
 
-  const navigate = (id: string) => {
+  const navigate = (id: string, href?: string) => {
     setOpen(false)
-    setTimeout(() => {
-      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
-    }, 50)
+    if (href) {
+      setTimeout(() => { window.location.href = href }, 50)
+    } else {
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+      }, 50)
+    }
   }
 
   return (
@@ -92,11 +96,11 @@ export function MobileNav({ sections, activeSection }: MobileNavProps) {
               </div>
 
               <ul className="flex flex-col gap-1">
-                {sections.map(({ id, label }) => (
+                {sections.map(({ id, label, href }) => (
                   <li key={id}>
                     <button
                       type="button"
-                      onClick={() => navigate(id)}
+                      onClick={() => navigate(id, href)}
                       className={cn(
                         'w-full text-left px-3 py-3 rounded-md transition-colors duration-150',
                       )}

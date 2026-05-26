@@ -10,7 +10,7 @@ import { NostalgiaSection } from '@/components/features/nostalgia/NostalgiaSecti
 import { ImpactSection } from '@/components/features/impact/ImpactSection'
 import { LegendsSection } from '@/components/features/legends/LegendsSection'
 import { FactsSection } from '@/components/features/facts/FactsSection'
-import { BracketSection } from '@/components/features/bracket/BracketSection'
+import { ScheduleCTA } from '@/components/features/schedule/ScheduleCTA'
 
 export default function App() {
   return (
@@ -27,7 +27,7 @@ export default function App() {
         <ImpactSection />
         <LegendsSection />
         <FactsSection />
-        <BracketSection />
+        <ScheduleCTA />
       </main>
       <Footer />
     </div>

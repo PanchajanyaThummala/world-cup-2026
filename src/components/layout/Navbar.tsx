@@ -11,11 +11,8 @@ const NAV_SECTIONS = [
   { id: 'impact',    label: 'Impact' },
   { id: 'legends',   label: 'Legends' },
   { id: 'facts',     label: 'Facts' },
-  { id: 'bracket',   label: 'Bracket' },
+  { id: 'schedule',  label: 'Schedule', href: '/schedule' },
 ]
-
-const LEFT_NAV  = NAV_SECTIONS.slice(0, 4)
-const RIGHT_NAV = NAV_SECTIONS.slice(4)
 
 function NavButton({
   id, label, active, onClick,
@@ -98,9 +95,36 @@ export function Navbar() {
       >
         {/* All nav links — left side */}
         <ul className="hidden lg:flex items-center gap-1">
-          {NAV_SECTIONS.map(({ id, label }) => (
+          {NAV_SECTIONS.filter(s => !s.href).map(({ id, label }) => (
             <NavButton key={id} id={id} label={label} active={activeSection === id} onClick={() => scrollTo(id)} />
           ))}
+          <li style={{ marginLeft: 8 }}>
+            <a
+              href="/schedule"
+              style={{
+                fontFamily: "'Inter', sans-serif",
+                fontSize: 14,
+                fontWeight: 600,
+                color: 'rgba(255,215,0,0.8)',
+                minHeight: 44,
+                letterSpacing: '0.02em',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 6,
+                padding: '6px 14px',
+                border: '1px solid rgba(255,215,0,0.28)',
+                borderRadius: 6,
+                textDecoration: 'none',
+                background: 'rgba(255,215,0,0.05)',
+                transition: 'background 0.15s, color 0.15s',
+              }}
+            >
+              Schedule
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true" style={{ opacity: 0.7 }}>
+                <path d="M2 6h8M7 3l3 3-3 3" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
+          </li>
         </ul>
 
 
