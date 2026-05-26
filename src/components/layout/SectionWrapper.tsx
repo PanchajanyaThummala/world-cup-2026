@@ -7,6 +7,7 @@ interface SectionWrapperProps {
   style?: React.CSSProperties
   fullBleed?: boolean
   glowPosition?: 'top-left' | 'top-right' | 'none'
+  backgroundLayer?: React.ReactNode
 }
 
 export function SectionWrapper({
@@ -16,6 +17,7 @@ export function SectionWrapper({
   style,
   fullBleed = false,
   glowPosition = 'none',
+  backgroundLayer,
 }: SectionWrapperProps) {
   return (
     <>
@@ -31,6 +33,9 @@ export function SectionWrapper({
           ...style,
         }}
       >
+        {/* Background layer — sits at section level, behind all content */}
+        {backgroundLayer}
+
         {/* Radial ambient glow */}
         {glowPosition !== 'none' && (
           <div

@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { SectionWrapper } from '@/components/layout/SectionWrapper'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { VenueCard } from './VenueCard'
+import { VenueMapBackground } from './VenueMapBackground'
 import { VENUES } from '@/data/venues'
 import { staggerContainer } from '@/lib/motion'
 import type { HostCountry } from '@/types'
@@ -20,7 +21,7 @@ export function VenuesSection() {
   }))
 
   return (
-    <SectionWrapper id="venues" style={{ background: 'var(--color-bg-surface)' }} glowPosition="top-left">
+    <SectionWrapper id="venues" style={{ background: 'var(--color-bg-surface)' }} glowPosition="top-left" backgroundLayer={<VenueMapBackground />}>
       <SectionHeading
         eyebrow="16 Stadiums · 3 Nations"
         sectionNum="02"
