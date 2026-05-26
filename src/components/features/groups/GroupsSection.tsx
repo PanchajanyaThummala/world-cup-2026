@@ -2,12 +2,13 @@ import { motion } from 'framer-motion'
 import { SectionWrapper } from '@/components/layout/SectionWrapper'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { GroupCard } from './GroupCard'
+import { GroupsBackground } from './GroupsBackground'
 import { GROUPS } from '@/data/groups'
 import { staggerContainer } from '@/lib/motion'
 
 export function GroupsSection() {
   return (
-    <SectionWrapper id="groups" style={{ background: 'var(--color-bg-base)' }} glowPosition="top-right">
+    <SectionWrapper id="groups" style={{ background: 'var(--color-bg-base)' }} glowPosition="top-right" backgroundLayer={<GroupsBackground />}>
       <SectionHeading
         eyebrow="48 Teams · 12 Groups"
         title="The Group Stage"
