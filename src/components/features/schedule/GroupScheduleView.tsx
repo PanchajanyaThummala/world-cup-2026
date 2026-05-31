@@ -4,21 +4,9 @@ import { MATCHES } from '@/data/schedule'
 import { MatchCard } from './MatchCard'
 
 const GROUPS = ['All', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'] as const
-const MATCHDAYS = ['All', 'MD1', 'MD2', 'MD3'] as const
 type GroupFilter = typeof GROUPS[number]
-type MatchdayFilter = typeof MATCHDAYS[number]
 
 const GROUP_STAGE = MATCHES.filter(m => m.stage === 'Group Stage')
-
-// Determine matchday from match date ranges
-function getMatchday(date: string): 'MD1' | 'MD2' | 'MD3' {
-  const d = new Date(date)
-  const md1End = new Date('2026-06-19')
-  const md2End = new Date('2026-06-27')
-  if (d < md1End) return 'MD1'
-  if (d < md2End) return 'MD2'
-  return 'MD3'
-}
 
 const tabStyle = (active: boolean): React.CSSProperties => ({
   padding: '5px 14px',
@@ -37,15 +25,12 @@ const tabStyle = (active: boolean): React.CSSProperties => ({
 
 export function GroupScheduleView() {
   const [groupFilter, setGroupFilter] = useState<GroupFilter>('All')
-  const [matchdayFilter, setMatchdayFilter] = useState<MatchdayFilter>('All')
 
   const filtered = useMemo(() => {
-    return GROUP_STAGE.filter(m => {
-      const groupOk = groupFilter === 'All' || m.group === groupFilter
-      const mdOk = matchdayFilter === 'All' || getMatchday(m.date) === matchdayFilter
-      return groupOk && mdOk
-    })
-  }, [groupFilter, matchdayFilter])
+    return GROUP_STAGE.filter(m =>
+      groupFilter === 'All' || m.group === groupFilter
+    )
+  }, [groupFilter])
 
   // Group by date for section headers
   const byDate = useMemo(() => {
@@ -60,37 +45,19 @@ export function GroupScheduleView() {
 
   return (
     <div>
-      {/* Filters */}
-      <div style={{ marginBottom: 28 }}>
-        {/* Group filter */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 12 }}>
-          {GROUPS.map(g => (
-            <motion.button
-              key={g}
-              onClick={() => setGroupFilter(g)}
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
-              style={tabStyle(groupFilter === g)}
-            >
-              {g === 'All' ? 'All Groups' : `Group ${g}`}
-            </motion.button>
-          ))}
-        </div>
-
-        {/* Matchday filter */}
-        <div style={{ display: 'flex', gap: 6 }}>
-          {MATCHDAYS.map(md => (
-            <motion.button
-              key={md}
-              onClick={() => setMatchdayFilter(md)}
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
-              style={tabStyle(matchdayFilter === md)}
-            >
-              {md === 'All' ? 'All Matchdays' : `Matchday ${md.slice(2)}`}
-            </motion.button>
-          ))}
-        </div>
+      {/* Group filters */}
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 28 }}>
+        {GROUPS.map(g => (
+          <motion.button
+            key={g}
+            onClick={() => setGroupFilter(g)}
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.96 }}
+            style={tabStyle(groupFilter === g)}
+          >
+            {g === 'All' ? 'All Groups' : `Group ${g}`}
+          </motion.button>
+        ))}
       </div>
 
       {/* Match count */}
@@ -108,7 +75,7 @@ export function GroupScheduleView() {
       <AnimatePresence mode="popLayout">
         {byDate.map(([date, matches]) => (
           <motion.div
-            key={date + groupFilter + matchdayFilter}
+            key={date + groupFilter}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
